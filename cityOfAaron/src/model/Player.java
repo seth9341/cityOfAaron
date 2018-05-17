@@ -17,7 +17,7 @@ public class Player implements Serializable{
     
     // class instance variables
     private String name;
-    private ArrayList<Game> games = new ArrayList<>();
+    private Game game;
 
     // class constructor
     public Player() {
@@ -32,15 +32,15 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public ArrayList<Game> getGames() {
-        return games;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGames(ArrayList<Game> games) {
-        this.games = games;
+    public void setGame(Game game) {
+        this.game = game;
     }
     
-    
+        
 
     @Override
     public int hashCode() {
