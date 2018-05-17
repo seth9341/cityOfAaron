@@ -5,11 +5,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author brucem
  */
-public enum TeamMember {
+public enum TeamMember implements Serializable{
     
     Grandfather("Bruce Montgomery", "Old Man"),
     Father("Seth Huntley", "Man"),
