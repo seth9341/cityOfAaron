@@ -30,9 +30,11 @@ public class CityOfAaron {
         ArrayList<ListItem> tools = new ArrayList<>();
         tools.add(new ListItem ("Axe", 2));
         
-       //added by Seth to test the CropData Class
-        ArrayList<CropData> crops = new ArrayList<>();
-        crops.add(new CropData (3));
+       //added by Bruce to test the ListItem Class 
+        CropData cropOne = new CropData();
+        
+        cropOne.setcropYield(33);
+        System.out.println("Your crop yields are " + cropOne.getcropYield() + " crops. Yay! You're not starving this year!");
     }
     
 }
