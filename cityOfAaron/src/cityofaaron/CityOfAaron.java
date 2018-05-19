@@ -10,11 +10,8 @@ import java.util.ArrayList;
 import model.ListItem;
 import model.Player;
 import model.TeamMember;
+import model.CropData;
 
-/**
- *
- * @author seth
- */
 public class CityOfAaron {
 
     /**
@@ -33,7 +30,9 @@ public class CityOfAaron {
         ArrayList<ListItem> tools = new ArrayList<>();
         tools.add(new ListItem ("Axe", 2));
         
-        
+       //added by Seth to test the CropData Class
+        ArrayList<CropData> crops = new ArrayList<>();
+        crops.add(new CropData (3));
     }
     
 }
