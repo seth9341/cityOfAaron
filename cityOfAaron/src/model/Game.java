@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The Game class file for the cityOfAaron project
+ * CIT-260
+ * Spring 2018
+ * Team members: Seth Huntley, Bruce Montgomery, Stanley Varner
  */
 package model;
 
@@ -15,8 +16,7 @@ public class Game implements Serializable{
     
    //class instance variables
     private Player thePlayer;
-    private Player player;
-   
+     
     
   //class constructor
     public Game() {
@@ -29,16 +29,4 @@ public class Game implements Serializable{
     public void setThePlayer(Player thePlayer) {
         this.thePlayer = thePlayer;
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-    
-    
-    
-    
 }
