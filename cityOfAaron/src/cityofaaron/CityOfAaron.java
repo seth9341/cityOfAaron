@@ -6,7 +6,6 @@
  */
 package cityofaaron;
 
-import java.util.ArrayList;
 import model.ListItem;
 import model.Player;
 import model.TeamMember;
@@ -27,10 +26,10 @@ public class CityOfAaron {
         
        
        //added by Bruce to test the ListItem Class 
-        ArrayList<ListItem> tools = new ArrayList<>();
-        tools.add(new ListItem ("Axe", 2));
-        tools.add(new ListItem ("Shovel", 5));
-        System.out.println(tools.toString());
+        ListItem shovel = new ListItem( );
+        shovel.setName("shovel");
+        shovel.setNumber(5);
+        System.out.println(shovel.toString());
         
         CropData cropOne = new CropData();
         
