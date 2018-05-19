@@ -6,6 +6,8 @@
  */
 package cityofaaron;
 
+import java.util.ArrayList;
+import model.ListItem;
 import model.Player;
 import model.TeamMember;
 
@@ -25,6 +27,13 @@ public class CityOfAaron {
         System.out.println("Player Ones Name is " + playerOne.getName());
         
         System.out.println(TeamMember.Son.getName() + " is a " + TeamMember.Son.getTitle());
+        
+       
+       //added by Bruce to test the ListItem Class 
+        ArrayList<ListItem> tools = new ArrayList<>();
+        tools.add(new ListItem ("Axe", 2));
+        
+        
     }
     
 }

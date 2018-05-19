@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The ListItem class file for the cityOfAaron project
+ * CIT-260
+ * Spring 2018
+ * Team members: Seth Huntley, Bruce Montgomery, Stanley Varner
  */
 package model;
 
@@ -17,9 +18,12 @@ public class ListItem implements Serializable{
     private String name;
     private int number;
 
-    public ListItem() {
-    }
 
+    public ListItem(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
+    
     public String getName() {
         return name;
     }
@@ -35,6 +39,8 @@ public class ListItem implements Serializable{
     public void setNumber(int number) {
         this.number = number;
     }
+    
+    
     
     
     
