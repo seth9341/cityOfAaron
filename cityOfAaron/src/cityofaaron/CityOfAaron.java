@@ -32,8 +32,8 @@ public class CityOfAaron {
        //added by Bruce to test the ListItem Class 
         ArrayList<ListItem> tools = new ArrayList<>();
         tools.add(new ListItem ("Axe", 2));
-        
-        
+        tools.add(new ListItem ("Shovel", 5));
+        System.out.println(tools.toString());
     }
     
 }
