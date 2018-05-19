@@ -10,11 +10,8 @@ import java.util.ArrayList;
 import model.ListItem;
 import model.Player;
 import model.TeamMember;
+import model.CropData;
 
-/**
- *
- * @author seth
- */
 public class CityOfAaron {
 
     /**
@@ -34,6 +31,12 @@ public class CityOfAaron {
         tools.add(new ListItem ("Axe", 2));
         tools.add(new ListItem ("Shovel", 5));
         System.out.println(tools.toString());
+        
+        CropData cropOne = new CropData();
+        
+        cropOne.setcropYield(33);
+        System.out.println("Your crop yields are " + cropOne.getcropYield() + " crops. Yay! You're not starving this year!");
+
     }
     
 }
