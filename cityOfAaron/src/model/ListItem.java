@@ -18,12 +18,9 @@ public class ListItem implements Serializable{
     private String name;
     private int number;
 
-
-    public ListItem(String name, int number) {
-        this.name = name;
-        this.number = number;
+    public ListItem() {
     }
-    
+
     public String getName() {
         return name;
     }
@@ -39,6 +36,13 @@ public class ListItem implements Serializable{
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "ListItem{" + "name=" + name + ", number=" + number + '}';
+    }
+    
+    
     
     
     

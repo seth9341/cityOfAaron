@@ -6,11 +6,11 @@
  */
 package cityofaaron;
 
-import java.util.ArrayList;
 import model.ListItem;
 import model.Player;
 import model.TeamMember;
 import model.CropData;
+import model.Location;
 
 public class CityOfAaron {
 
@@ -27,14 +27,22 @@ public class CityOfAaron {
         
        
        //added by Bruce to test the ListItem Class 
-        ArrayList<ListItem> tools = new ArrayList<>();
-        tools.add(new ListItem ("Axe", 2));
+        ListItem shovel = new ListItem( );
+        shovel.setName("shovel");
+        shovel.setNumber(5);
+        System.out.println(shovel.toString());
         
-       //added by Bruce to test the ListItem Class 
         CropData cropOne = new CropData();
         
         cropOne.setcropYield(33);
         System.out.println("Your crop yields are " + cropOne.getcropYield() + " crops. Yay! You're not starving this year!");
+        
+        //added by Stanley to test Location Class
+        Location earth = new Location();
+        earth.setDescription("I'm at the beach");
+        earth.setSymbol("@");
+        
+        System.out.println(earth.toString());
     }
     
 }
