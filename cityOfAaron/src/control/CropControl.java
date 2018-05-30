@@ -7,6 +7,7 @@
 
 package control;
 
+import model.CropData;
 import java.util.Random;
 
 
@@ -27,18 +28,18 @@ public class CropControl
         return -1;
 
 //if acresToSell > acresOwned, return -1
-int owned = cropData.getAcresOwned();
+int owned = cropData.getacresOwned();
 if(acresToSell > owned)
     return -1;
 
 //acresOwned = acresOwned - acresToSell
 owned -= acresToSell;
-cropData.setAcresOwned(owned);
+cropData.setacresOwned(owned);
 
 //wheatInStore = wheatInStore + acresToSell * landPrice
-int wheat = cropData.getWheatInStore();
+int wheat = cropData.getwheatInStore();
 wheat -= (acresToSell * landPrice);
-cropData.setWheatInStore(wheat);
+cropData.setwheatInStore(wheat);
 
 //return acresOwned
 return owned;
