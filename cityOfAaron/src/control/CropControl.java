@@ -3,7 +3,12 @@
 // Author: Seth Huntley, Bruce Montgomery, Stanley Varner
 // Date last modified: 2018.05.30
 //-------------------------------------------------------------
+
+
 package control;
+
+import java.util.Random;
+
 
 public class CropControl
 {
@@ -27,10 +32,16 @@ if(acresToSell > owned)
     return -1;
 
 //acresOwned = acresOwned - acresToSell
+owned -= acresToSell;
+cropData.setAcresOwned(owned);
 
 //wheatInStore = wheatInStore + acresToSell * landPrice
+int wheat = cropData.getWheatInStore();
+wheat -= (acresToSell * landPrice);
+cropData.setWheatInStore(wheat);
 
 //return acresOwned
+return owned;
 
      
  }
