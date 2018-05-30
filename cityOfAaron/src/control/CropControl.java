@@ -44,6 +44,25 @@ cropData.setwheatInStore(wheat);
 //return acresOwned
 return owned;
 
+ }
+
+// test feedpeople
+public int feedPeople(int wheatInStore, CropData cropData) {
+//check to see if there's any wheatForPeopla at all, and if not, return -1
+  if(wheatForPeople < 0)
+    return -1;
+//check to see if there's more what in storage than what the people need, if not, then return -1
+int wheatInStore = cropData.getwheatInStore();
+  if(wheatForPeople > wheatInStore)
+    return -1;
+//subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
+  wheatInStore -= wheatForPeople
+     cropData.setwheatInStore(wheatInStore);
+//set the wheatForPeople
+     cropData.setwheatForPeople();
+     return wheatInStore;
+}
+
      
  }
 
