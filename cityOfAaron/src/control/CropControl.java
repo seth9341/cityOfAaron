@@ -45,7 +45,45 @@ cropData.setwheatInStore(wheat);
 return owned;
 
  }
-
+/**
+* The buyLand method
+*Purpose:  To buy land
+*@param landPrice the price of land
+*@param acresToBuy the number of acres to buy.
+*@param cropData reference to a CropData object
+*@return the amount of land after the buy
+* Pre-conditions:  the number of acres to be bought must be positive.
+* The player must have enough wheat to purchase the number of acres desired.
+* The city must have enough people to tend the land.
+*/
+public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
+{
+//    If acresToBuy < 0, return -1
+      if(acresToBuy < 0)
+          return -1;
+         
+//    If acresToBuy * landPrice  > wheatInStore, return -1
+      int wheat = cropData.getwheatInStore();
+      if(acresToBuy * landPrice > wheat)
+          return -1;
+      
+//    If (acresToBuy + acresOwned)/10 > population, return -1
+      int owned = cropData.getacresOwned();
+      int pop = cropData.getpopulation();
+      if((acresToBuy + owned)/10 > pop)
+          return -1;
+      
+//    acresOwned = acresOwned + acresToBuy
+      owned += acresToBuy;
+      cropData.setacresOwned(owned);
+      
+//    wheatInStore = wheatInStore – (acresToBy * landPrice
+      wheat -= acresToBuy * landPrice;
+      cropData.setwheatInStore(wheat);
+      
+//    return acresOwned
+      return owned;
+}
 // test feedpeople
 public int feedPeople(int wheatForPeople, CropData cropData) {
 //check to see if there's any wheatForPeopla at all, and if not, return -1
