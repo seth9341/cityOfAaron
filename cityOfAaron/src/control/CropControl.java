@@ -109,4 +109,45 @@ public int feedPeople(int wheatForPeople, CropData cropData) {
      
     return wheat;
 }
+
+/**
+* The plantCrops method
+* Author: Bruce Montgomery
+*Purpose:  To determine how many acres of land to plant.
+*@param acresToPlant the number of acres to plant.
+*@param cropData reference to a CropData object
+*@return the amount of acres of land to plant
+* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.  Verify that the city has enough wheat in storage to plant this many acres.
+*/
+public static int plantCrops(int acresToPlant, CropData cropData)
+{
+//  If acresToPlant < 0, return -1
+    if(acresToPlant < 0){
+        return -1;
+    }
+//  If acresToPlant > acresOwned, return -1
+    int owned = cropData.getacresOwned();
+    if(acresToPlant > owned){
+        return -1;
+    }
+    
+//  If wheatInStore < acresToPlant / 2 return -1
+    int wheat = cropData.getwheatInStore();
+    if(wheat < acresToPlant/2) {
+        return -1;
+    }
+//  costToPlant = acresToPlant /2
+    double costToPlant;
+    costToPlant = acresToPlant/2;
+    
+//  wheatInStore = wheatInStore – costToPlant
+    wheat -= costToPlant;
+    cropData.setwheatInStore(wheat);
+    
+//  acresPlanted = acresToPlant
+    cropData.setacresPlanted(acresToPlant);
+    
+//  return acresPlanted
+    return cropData.getacresPlanted();
+}
 }
