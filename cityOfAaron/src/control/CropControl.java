@@ -88,7 +88,16 @@ public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
     return owned;
 }
 
-// test feedpeople
+/**
+* The feedPeople method
+* Author: Seth Huntley
+*Purpose: Is it possible to feed the people with the wheat you have
+*@param wheatForPeople the amount of what the people need
+*@param cropData reference to a CropData object
+*@return the amount of wheat
+* Pre-conditions:  the number of wheat has to be positive.  Check that there's
+* enough wheat to feed the people.
+*/
 public int feedPeople(int wheatForPeople, CropData cropData) {
 //  check to see if there's any wheatForPeopla at all, and if not, return -1
     if(wheatForPeople < 0) {
