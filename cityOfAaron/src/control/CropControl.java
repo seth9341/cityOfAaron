@@ -13,6 +13,22 @@ import java.util.Random;
 
 public class CropControl
 {
+    //constants
+    private static final int LAND_BASE = 17;
+    private static final int LAND_RANGE = 10;
+    
+    //random number generator
+    private static Random random = new Random();
+    
+// calcLandCost() method
+// Purpose:  Calculate a random land cost between 17 and 26 bushels/acre
+// Parameters: none
+// Returns: the land cost
+public static int calcLandCost()
+{
+    int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
+    return landPrice;
+}
     
 // The sellLand method
 // Purpose: To sell land
