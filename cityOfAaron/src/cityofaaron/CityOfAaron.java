@@ -11,6 +11,7 @@ import model.Player;
 import model.TeamMember;
 import model.CropData;
 import model.Location;
+import control.CropControl;
 
 public class CityOfAaron {
 
@@ -43,6 +44,9 @@ public class CityOfAaron {
         earth.setSymbol("@");
         
         System.out.println(earth.toString());
+        
+        //added by Bruce to test the calcLandCost method
+        System.out.println("The random generated cost for land is " + CropControl.calcLandCost() + " bushels of wheat per acre");
     }
     
 }
