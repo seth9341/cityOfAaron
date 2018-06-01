@@ -7,9 +7,11 @@ package control;
 
 import model.CropData;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -19,6 +21,14 @@ public class CropControlTest {
     CropData theCrops = new CropData();
     
     public CropControlTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
     }
     
     @Before
@@ -241,6 +251,22 @@ public class CropControlTest {
         expResult = 500;
         result = CropControl.plantCrops(acresToPlant, theCrops);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of feedPeople method, of class CropControl.
+     */
+    @Test
+    public void testFeedPeople() {
+        System.out.println("feedPeople");
+        int wheatForPeople = 0;
+        CropData cropData = null;
+        CropControl instance = new CropControl();
+        int expResult = 0;
+        int result = instance.feedPeople(wheatForPeople, cropData);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }
