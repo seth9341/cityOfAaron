@@ -29,7 +29,7 @@ public class CropControlTest {
     public void tearDown() {
     }
 
-    /**
+   /**
      * Test of sellLand method, of class CropControl.
      */
     @Test
@@ -169,6 +169,77 @@ public class CropControlTest {
         acresToBuy = 110;
         expResult = 2110;
         result = CropControl.buyLand(landPrice, acresToBuy, theCrops);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of plantCrops method, of class CropControl.
+     */
+    @Test
+    public void testPlantCrops() {
+        System.out.println("plantCrops");
+        
+         //--- Test case 1 ---
+        System.out.println("\tTest case 1");
+        theCrops.setwheatInStore(2450);
+        theCrops.setacresOwned(1000);
+        int acresToPlant = 500;
+        int expResult = 500;
+        int result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 2 ---
+        System.out.println("\tTest case 2");
+        theCrops.setwheatInStore(2700);
+        theCrops.setacresOwned(1000);
+        acresToPlant = -1;
+        expResult = -1;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 3 ---
+        System.out.println("\tTest case 3");
+        theCrops.setwheatInStore(2700);
+        theCrops.setacresOwned(1000);
+        acresToPlant = 1002;
+        expResult = -1;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 4 ---
+        System.out.println("\tTest case 4");
+        theCrops.setwheatInStore(250);
+        theCrops.setacresOwned(1000);
+        acresToPlant = 600;
+        expResult = -1;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 5 ---
+        System.out.println("\tTest case 5");
+        theCrops.setwheatInStore(2700);
+        theCrops.setacresOwned(1000);
+        acresToPlant = 0;
+        expResult = 0;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 6 ---
+        System.out.println("\tTest case 6");
+        theCrops.setwheatInStore(2200);
+        theCrops.setacresOwned(1000);
+        acresToPlant = 1000;
+        expResult = 1000;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
+        assertEquals(expResult, result);
+        
+         //--- Test case 7 ---
+        System.out.println("\tTest case 7");
+        theCrops.setwheatInStore(250);
+        theCrops.setacresOwned(1000);
+        acresToPlant = 500;
+        expResult = 500;
+        result = CropControl.plantCrops(acresToPlant, theCrops);
         assertEquals(expResult, result);
     }
     
