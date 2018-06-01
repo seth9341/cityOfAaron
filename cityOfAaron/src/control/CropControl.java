@@ -143,7 +143,8 @@ public int feedPeople(int wheatForPeople, CropData cropData) {
 *@param acresToPlant the number of acres to plant.
 *@param cropData reference to a CropData object
 *@return the amount of acres of land to plant
-* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.  Verify that the city has enough wheat in storage to plant this many acres.
+* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.
+* Verify that the city has enough wheat in storage to plant this many acres.
 */
 public static int plantCrops(int acresToPlant, CropData cropData)
 {
