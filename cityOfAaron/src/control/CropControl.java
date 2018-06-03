@@ -41,28 +41,30 @@ public static int calcLandCost()
 // random generated number based on three distinct tithing brackets
 // Parameters: none
 // Returns: the amount of crop/wheat yielded/harvested per acre.
-/* 
+
 public static int calcCropYield()
 {
-    int offering = cropYieldPerAcre.getoffering();
-    return offering;
+    // int offering = cropYieldPerAcre.getoffering();
+
+    int offering = 10;
+    
   
     if(offering < 8) {
         int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
-        return yield;
-    }
+        return yield;}
     
-    //if (offering >= 8 && offering <= 12)
-    //    int yield = rand.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
-    //    return yield;
-    ELSE { 
-        int yield = rand.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
-        return yield;
-    }
+    
+    if (offering >= 8 && offering <= 12) {
+        int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
+         return yield; }
+    else {
+        int yield = random.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
+        return yield; }
+    
+  
 
 }
 
-*/
 
 // The sellLand method
 // Purpose: To sell land
