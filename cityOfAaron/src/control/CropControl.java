@@ -213,4 +213,29 @@ public static int plantCrops(int acresToPlant, CropData cropData)
 //  return acresPlanted
     return cropData.getacresPlanted();
 }
+
+/**
+* The Set Offering method
+* Author: Stanley Varner
+*Purpose:  Set aside wheat to pay tithes and offerings
+*@param percentage of harvest to pay tithes  
+*@ Save value entered by user
+* Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
+*/
+public static void setOffering(int offering, CropData cropData) {
+    
+    //check to see if offering is neg or above 100
+    //if so print out to get new number
+    if (offering < 0){
+        System.out.println("Please enter a number between 0-100");
+    }
+    if (offering > 100){
+        System.out.println("Please enter a number between 0-100");
+    }
+    //if offering is between 0-100 then save/setoffering
+    else if (offering <= 0 && offering >= 100) {
+        cropData.setoffering(offering);
+    } 
+    
+}
 }
