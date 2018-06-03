@@ -222,16 +222,16 @@ public static int plantCrops(int acresToPlant, CropData cropData)
 *@ Save value entered by user
 * Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
 */
-public static void setOffering(int offering, CropData cropData) {
+public static void checkOffering(int tithe, CropData cropData) {
     
     //check to see if offering is neg or above 100
     //if so print out to get new number
-    if (offering < 0 || offering > 100){
+    if (tithe < 0 || tithe > 100){
         System.out.println("Please enter a number between 0-100");
     }
     //if offering is between 0-100 then save/setoffering
     else {
-        cropData.setoffering(offering);
+        cropData.setoffering(tithe);
     } 
     
 }
