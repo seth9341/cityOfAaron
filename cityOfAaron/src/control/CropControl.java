@@ -115,7 +115,7 @@ public int feedPeople(int wheatForPeople, CropData cropData) {
     wheat -= wheatForPeople;
     cropData.setwheatInStore(wheat);
 //  set the wheatForPeople
-    cropData.setwheatInStore(wheat);
+    cropData.setwheatForPeople(wheat);
      
     return wheat;
 }
