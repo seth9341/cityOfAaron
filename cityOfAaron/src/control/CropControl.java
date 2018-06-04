@@ -13,7 +13,59 @@ import java.util.Random;
 
 public class CropControl
 {
+    //constants
+    private static final int LAND_BASE = 17;
+    private static final int LAND_RANGE = 10;
+    private static final int HARV_8TO12_BASE = 2;
+    private static final int HARV_8TO12_RANGE = 3;
+    private static final int HARV_0TO7_BASE = 1;
+    private static final int HARV_0TO7_RANGE = 3;
+    private static final int HARV_ABOVE12_BASE = 2;
+    private static final int HARV_ABOVE12_RANGE = 4;
     
+    //random number generator
+    private static Random random = new Random();
+    
+// calcLandCost() method
+// Purpose:  Calculate a random land cost between 17 and 26 bushels/acre
+// Parameters: none
+// Returns: the land cost
+public static int calcLandCost()
+{
+    int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
+    return landPrice;
+}
+
+// calcCropYield() method (WORK IN PROGRESS)
+// Purpose:  calculate the crop/wheat yielded per acre.  The crop yield is based on a
+// random generated number based on three distinct tithing brackets
+// Parameters: none
+// Returns: the amount of crop/wheat yielded/harvested per acre.
+
+public static int calcCropYield()
+{
+    // int offering = cropYieldPerAcre.getoffering();
+
+    int offering = 10;
+    
+  
+    if(offering < 8) {
+        int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
+        return yield;}
+    
+    
+    if (offering >= 8 && offering <= 12) {
+        int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
+         return yield; }
+    else {
+        int yield = random.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
+        return yield; }
+    
+  
+
+}
+
+
 // The sellLand method
 // Purpose: To sell land
 // Parameters: the price of land, the number of acres to sell, and
@@ -127,7 +179,8 @@ public int feedPeople(int wheatForPeople, CropData cropData) {
 *@param acresToPlant the number of acres to plant.
 *@param cropData reference to a CropData object
 *@return the amount of acres of land to plant
-* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.  Verify that the city has enough wheat in storage to plant this many acres.
+* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.
+* Verify that the city has enough wheat in storage to plant this many acres.
 */
 public static int plantCrops(int acresToPlant, CropData cropData)
 {
@@ -159,5 +212,27 @@ public static int plantCrops(int acresToPlant, CropData cropData)
     
 //  return acresPlanted
     return cropData.getacresPlanted();
+}
+
+/**
+* The Set Offering method
+* Author: Stanley Varner
+*Purpose:  Set aside wheat to pay tithes and offerings
+*@param percentage of harvest to pay tithes  
+*@ Save value entered by user
+* Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
+*/
+public static void checkOffering(int tithe, CropData cropData) {
+    
+    //check to see if offering is neg or above 100
+    //if so print out to get new number
+    if (tithe < 0 || tithe > 100){
+        System.out.println("Please enter a number between 0-100");
+    }
+    //if offering is between 0-100 then save/setoffering
+    else {
+        cropData.setoffering(tithe);
+    } 
+    
 }
 }
