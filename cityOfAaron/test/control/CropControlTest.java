@@ -268,5 +268,44 @@ public class CropControlTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of calcLandCost method, of class CropControl.
+     */
+    @Test
+    public void testCalcLandCost() {
+        System.out.println("calcLandCost");
+        int expResult = 0;
+        int result = CropControl.calcLandCost();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of calcCropYield method, of class CropControl.
+     */
+    @Test
+    public void testCalcCropYield() {
+        System.out.println("calcCropYield");
+        int expResult = 0;
+        int result = CropControl.calcCropYield();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkOffering method, of class CropControl.
+     */
+    @Test
+    public void testCheckOffering() {
+        System.out.println("checkOffering");
+        int tithe = 0;
+        CropData cropData = null;
+        CropControl.checkOffering(tithe, cropData);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
