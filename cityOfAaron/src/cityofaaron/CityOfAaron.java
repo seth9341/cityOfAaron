@@ -51,6 +51,7 @@ public class CityOfAaron {
         //added by Bruce to test the calcCropYield method
         //CropData cropYieldPerAcre = new CropData();
         //cropYieldPerAcre.setoffering(7);
+        //System.out.println("The offering is " + cropYieldPerAcre.getoffering());
         System.out.println("The calculated crop yield is " + CropControl.calcCropYield());
     }
     
