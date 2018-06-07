@@ -260,13 +260,13 @@ public class CropControlTest {
     public void testFeedPeople() {
         System.out.println("feedPeople");
         int wheatForPeople = 0;
-        CropData cropData = null;
+        
         CropControl instance = new CropControl();
         int expResult = 0;
-        int result = instance.feedPeople(wheatForPeople, cropData);
+        int result = instance.feedPeople(wheatForPeople, theCrops);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
    
@@ -278,10 +278,10 @@ public class CropControlTest {
     public void testCheckOffering() {
         System.out.println("checkOffering");
         int tithe = 0;
-        CropData cropData = null;
+        CropData cropData = new CropData();
         CropControl.checkOffering(tithe, cropData);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }
