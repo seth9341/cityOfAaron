@@ -13,9 +13,11 @@ import java.util.Random;
 
 public class CropControl
 {
-    //constants
+    //constants to calculate land cost
     private static final int LAND_BASE = 17;
     private static final int LAND_RANGE = 10;
+    
+    //constants to calculate crop yield
     private static final int HARV_8TO12_BASE = 2;
     private static final int HARV_8TO12_RANGE = 3;
     private static final int HARV_0TO7_BASE = 1;
@@ -44,9 +46,9 @@ public static int calcLandCost()
 
 public static int calcCropYield()
 {
-    // int offering = cropYieldPerAcre.getoffering();
-
-    int offering = 10;
+    CropData cropYieldPerAcre = new CropData();
+    cropYieldPerAcre.setoffering(5);
+    int offering = cropYieldPerAcre.getoffering();
     
   
     if(offering < 8) {
