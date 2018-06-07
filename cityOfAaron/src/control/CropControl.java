@@ -142,6 +142,7 @@ public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
     return owned;
 }
 
+
 /**
 * The feedPeople method
 * Author: Seth Huntley
@@ -152,67 +153,48 @@ public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
 * Pre-conditions:  the number of wheat has to be positive.  Check that there's
 * enough wheat to feed the people.
 */
-public int feedPeople(int wheatForPeople, CropData cropData) {
+public static int feedPeople(int wheatForPeople, CropData cropData) {
+
 //  check to see if there's any wheatForPeopla at all, and if not, return -1
     if(wheatForPeople < 0) {
         return -1;
     }
-    
-//  check to see if there's more what in storage than what the people need, if not, then return -1
-    int wheat = cropData.getwheatInStore();
-  
-    if(wheat < wheatForPeople) {
-        return -1;
-    }
+
+    int wheatInStore = cropData.getwheatInStore();
+    if (wheatInStore < wheatForPeople ){
+    return -1;
+}
     
 //  subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
-    wheat -= wheatForPeople;
-    cropData.setwheatInStore(wheat);
+    wheatInStore -= wheatForPeople;
+    cropData.setwheatInStore(wheatInStore);
+
 //  set the wheatForPeople
-    cropData.setwheatInStore(wheat);
+    wheatForPeople += cropData.getwheatForPeople();
+    cropData.setwheatForPeople(wheatForPeople);
      
-    return wheat;
+    return wheatForPeople;
 }
 
 /**
-* The plantCrops method
-* Author: Bruce Montgomery
-*Purpose:  To determine how many acres of land to plant.
-*@param acresToPlant the number of acres to plant.
-*@param cropData reference to a CropData object
-*@return the amount of acres of land to plant
-* Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.
-* Verify that the city has enough wheat in storage to plant this many acres.
+* The Set Offering method
+* Author: Stanley Varner
+*Purpose:  Set aside wheat to pay tithes and offerings
+*@param percentage of harvest to pay tithes  
+*@ Save value entered by user
+* Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
 */
-public static int plantCrops(int acresToPlant, CropData cropData)
-{
-//  If acresToPlant < 0, return -1
-    if(acresToPlant < 0){
-        return -1;
+public static void checkOffering(int tithe, CropData cropData) {
+    
+    //check to see if offering is neg or above 100
+    //if so print out to get new number
+    if (tithe < 0 || tithe > 100){
+        System.out.println("Please enter a number between 0-100");
     }
-//  If acresToPlant > acresOwned, return -1
-    int owned = cropData.getacresOwned();
-    if(acresToPlant > owned){
-        return -1;
-    }
+    //if offering is between 0-100 then save/setoffering
+    else {
+        cropData.setoffering(tithe);
+    } 
     
-//  If wheatInStore < acresToPlant / 2 return -1
-    int wheat = cropData.getwheatInStore();
-    if(wheat < acresToPlant/2) {
-        return -1;
-    }
-//  costToPlant = acresToPlant /2
-    double costToPlant;
-    costToPlant = acresToPlant/2;
-    
-//  wheatInStore = wheatInStore – costToPlant
-    wheat -= costToPlant;
-    cropData.setwheatInStore(wheat);
-    
-//  acresPlanted = acresToPlant
-    cropData.setacresPlanted(acresToPlant);
-    
-//  return acresPlanted
-    return cropData.getacresPlanted();
 }
 }
