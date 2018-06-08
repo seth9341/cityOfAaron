@@ -132,7 +132,7 @@ public void displayMenuView()
     Game theGame = new Game();
 
     // Save a reference to it in the GameProject class.
-    CityOfAaron.setTheGame(theGame); //What do we do instead of gameproject?
+    CityOfAaron.setTheGame(theGame);
 
     // Display the Banner Page.
     System.out.println("\nWelcome to the best city on planet earth, the city of Aaron. \n"
@@ -169,17 +169,17 @@ public void displayMenuView()
 
 public void startSavedGame() 
 {
-    
+    System.out.println("Called startSavedGame method.");
 }
 
 public void displayHelpMenuView()
 {
-    
+    System.out.println("Called displayHelpMenuView method.");
 }
 
 public void displaySaveGameView()
 {
-    
+    System.out.println("Called displaySaveGameView method.");
 }
     
 }
