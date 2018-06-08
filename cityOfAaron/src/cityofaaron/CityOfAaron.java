@@ -12,8 +12,23 @@ import model.TeamMember;
 import model.CropData;
 import model.Location;
 import control.CropControl;
+import view.*; //slides have this capitolized but I did not because it's not
+import model.Game;
+
 
 public class CityOfAaron {
+        // variable for keeping a reference to the Game object
+        private static Game theGame = null;
+
+    public static Game getTheGame() {
+        return theGame;
+    }
+
+    public static void setTheGame(Game theGame) {
+        CityOfAaron.theGame = theGame;
+    }
+        
+        
 
     /**
      * @param args the command line arguments 
@@ -53,6 +68,12 @@ public class CityOfAaron {
         //cropYieldPerAcre.setoffering(7);
         //System.out.println("The offering is " + cropYieldPerAcre.getoffering());
         System.out.println("The calculated crop yield is " + CropControl.calcCropYield());
+    
+        MainMenuView mmv = new MainMenuView();
+        mmv.displayMenuView();
+        
+        
     }
+    
     
 }
