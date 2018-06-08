@@ -34,6 +34,14 @@ public class CityOfAaron {
      * @param args the command line arguments 
      */
     public static void main(String[] args) {
+        
+        // Create a MainMenuView instance called mmv
+        MainMenuView mmv = new MainMenuView();
+        
+        // Call the displayMenuView method of the newly created mmv instance
+        mmv.displayMenuView();
+        
+        
         Player playerOne = new Player();
         
         playerOne.setName("Alma");
@@ -69,10 +77,7 @@ public class CityOfAaron {
         //System.out.println("The offering is " + cropYieldPerAcre.getoffering());
         System.out.println("The calculated crop yield is " + CropControl.calcCropYield());
     
-        MainMenuView mmv = new MainMenuView();
-        mmv.displayMenuView();
-        
-        
+                
     }
     
     
