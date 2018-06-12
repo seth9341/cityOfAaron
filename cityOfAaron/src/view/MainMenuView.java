@@ -20,7 +20,7 @@ public class MainMenuView
         private String theMenu;
         private int max;
         
-  // The MainMenuView constructor
+// The MainMenuView constructor
 // Purpose: Initialize the menu data
 // Parameters: none
 // Returns: none

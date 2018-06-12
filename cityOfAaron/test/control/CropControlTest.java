@@ -277,11 +277,42 @@ public class CropControlTest {
     @Test
     public void testCheckOffering() {
         System.out.println("checkOffering");
-        int tithe = 0;
-        CropData cropData = new CropData();
-        CropControl.checkOffering(tithe, cropData);
-        // TODO review the generated test code and remove the default call to fail.
         
+        //--- Test case 1 ---
+        System.out.println("\tTest case 1");
+        int tithe = 90;
+        int expResult = 90;
+        int result = CropControl.checkOffering(tithe, theCrops);
+        assertEquals(expResult, result);
+        
+        
+        //--- Test case 2 ---
+        System.out.println("\tTest case 2");
+        tithe = 110;
+        expResult = -1;
+        result = CropControl.checkOffering(tithe, theCrops);
+        assertEquals(expResult, result);
+        
+        //--- Test case 3 ---
+        System.out.println("\tTest case 3");
+        tithe = -10;
+        expResult = -1;
+        result = CropControl.checkOffering(tithe, theCrops);
+        assertEquals(expResult, result);
+        
+        //--- Test case 4 ---
+        System.out.println("\tTest case 4");
+        tithe = 0;
+        expResult = 0;
+        result = CropControl.checkOffering(tithe, theCrops);
+        assertEquals(expResult, result);
+        
+        //--- Test case 5 ---
+        System.out.println("\tTest case 5");
+        tithe = 100;
+        expResult = 100;
+        result = CropControl.checkOffering(tithe, theCrops);
+        assertEquals(expResult, result);
     }
     
 }

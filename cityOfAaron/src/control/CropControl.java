@@ -38,34 +38,7 @@ public static int calcLandCost()
     return landPrice;
 }
 
-// calcCropYield() method (WORK IN PROGRESS)
-// Purpose:  calculate the crop/wheat yielded per acre.  The crop yield is based on a
-// random generated number based on three distinct tithing brackets
-// Parameters: none
-// Returns: the amount of crop/wheat yielded/harvested per acre.
 
-public static int calcCropYield()
-{
-    CropData cropYieldPerAcre = new CropData();
-    cropYieldPerAcre.setoffering(5);
-    int offering = cropYieldPerAcre.getoffering();
-    
-  
-    if(offering < 8) {
-        int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
-        return yield;}
-    
-    
-    if (offering >= 8 && offering <= 12) {
-        int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
-         return yield; }
-    else {
-        int yield = random.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
-        return yield; }
-    
-  
-
-}
 
 
 // The sellLand method
@@ -184,17 +157,19 @@ public static int feedPeople(int wheatForPeople, CropData cropData) {
 *@ Save value entered by user
 * Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
 */
-public static void checkOffering(int tithe, CropData cropData) {
+public static int checkOffering(int tithe, CropData cropData) {
     
     //check to see if offering is neg or above 100
     //if so print out to get new number
     if (tithe < 0 || tithe > 100){
         System.out.println("Please enter a number between 0-100");
+        return -1;
     }
     //if offering is between 0-100 then save/setoffering
     else {
         cropData.setoffering(tithe);
-    } 
+    }
+    return tithe;
     
 }
 
@@ -232,11 +207,59 @@ public static int plantCrops(int acresToPlant, CropData cropData)
 //  wheatInStore = wheatInStore – costToPlant
     wheat -= costToPlant;
     cropData.setwheatInStore(wheat);
+    System.out.println("There are " + wheat + " bushels of wheat in storage");
     
 //  acresPlanted = acresToPlant
     cropData.setacresPlanted(acresToPlant);
     
 //  return acresPlanted
     return cropData.getacresPlanted();
+}
+
+// harvestCrops() method
+// Purpose:  calculate the crop/wheat yielded per acre.  The crop yield is based on a
+// random generated number based on three distinct tithing brackets.  After calculating
+// the yield, get the amount of acres planted.  Multiply the yield * acres planted to get
+// the amount of wheat harvested.
+// Parameters: cropData reference to a CropData object
+// Returns: the amount of wheat harvested.
+
+public static int harvestCrops(CropData cropData)
+{
+    int offering = cropData.getoffering();
+    int lvHarvest;
+    System.out.println("The offering is " + offering);
+    
+  
+    if(offering < 8) {
+        int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
+        System.out.println("the yield is " + yield);
+        int acres = cropData.getacresPlanted();
+        lvHarvest = yield * acres;
+        cropData.setharvest(lvHarvest);
+        System.out.println("You harvested " + lvHarvest + " bushels of wheat.");
+        return lvHarvest;}
+    
+    
+    if (offering >= 8 && offering <= 12) {
+        int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
+        System.out.println("the yield is " + yield);
+        int acres = cropData.getacresPlanted();
+        lvHarvest = yield * acres;
+        cropData.setharvest(lvHarvest);
+        System.out.println("You harvested " + lvHarvest + " bushels of wheat.");
+        return lvHarvest;}
+    
+    else {
+        int yield = random.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
+        System.out.println("the yield is " + yield);
+        int acres = cropData.getacresPlanted();
+        lvHarvest = yield * acres;
+        cropData.setharvest(lvHarvest);
+        System.out.println("You harvested " + lvHarvest + " bushels of wheat.");
+        return lvHarvest;}
+    
+  
+
 }
 }

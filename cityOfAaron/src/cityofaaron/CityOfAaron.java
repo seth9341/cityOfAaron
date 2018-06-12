@@ -71,11 +71,11 @@ public class CityOfAaron {
         //added by Bruce to test the calcLandCost method
         System.out.println("The random generated cost for land is " + CropControl.calcLandCost() + " bushels of wheat per acre");
         
-        //added by Bruce to test the calcCropYield method
-        //CropData cropYieldPerAcre = new CropData();
-        //cropYieldPerAcre.setoffering(7);
-        //System.out.println("The offering is " + cropYieldPerAcre.getoffering());
-        System.out.println("The calculated crop yield is " + CropControl.calcCropYield());
+        //added by Bruce to test the harvestCrops method
+        CropData testHarvestCrops = new CropData();
+        testHarvestCrops.setoffering(13);
+        testHarvestCrops.setacresPlanted(500);
+        System.out.println("The calculated crop yield is " + CropControl.harvestCrops(testHarvestCrops));
     
                 
     }
