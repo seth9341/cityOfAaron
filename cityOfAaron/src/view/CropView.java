@@ -18,7 +18,9 @@ public class CropView {
     //Get references to the Game object and the CropData object
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
-    
+    //store price variable here so the buyLandView and sellLandView methods can
+    //use the same value
+    private static int price = CropControl.calcLandCost();
     
     //The runCropsView method()
     //Purpose: runs the CropView methods in the correct order when the user
@@ -41,9 +43,7 @@ public class CropView {
     //Returns: none
     public static void buyLandView()
     {
-        //Get the cost to buy land for this round.
-        int price = CropControl.calcLandCost();
-        
+               
         //Prompt the user to enter the number of acres to buy.
         System.out.format("Land is selling for %d bushels per acre.%n",price);
         System.out.print("\nHow many acres of land do you wish to buy? ");
