@@ -9,6 +9,7 @@ import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import model.Player;
 import model.Game;
+import model.CropData;
 
 /**
  *
@@ -16,9 +17,9 @@ import model.Game;
  */
 public class MainMenuView 
 {
-    Scanner keyboard = new Scanner(System.in);
-        private String theMenu;
-        private int max;
+    private static Scanner keyboard = new Scanner(System.in);
+    private String theMenu;
+    private int max;
         
 // The MainMenuView constructor
 // Purpose: Initialize the menu data
@@ -152,10 +153,29 @@ public void displayMenuView()
     String name;
     System.out.println("\nPlease type in your first name: ");
     name = keyboard.next();
-
+    
     // Save the user’s name in the Player object
     thePlayer.setName(name);
-
+    
+    //Create a CropData object
+    CropData cropData = new CropData();
+   
+    //initialize new CropData object
+    cropData.setyear(0);
+    cropData.setpopulation(100);
+    cropData.setnewPeople(5);
+    cropData.setcropYield(3);
+    cropData.setnumberWhoDied(0);
+    cropData.setoffering(10);
+    cropData.setwheatInStore(2700);
+    cropData.setacresOwned(1000);
+    cropData.setacresPlanted(1000);
+    cropData.setharvest(3000);
+    cropData.setofferingBushels(300);
+    
+    // Save a reference to the CropData object in the Game object
+    theGame.setCropData(cropData);
+    
     // Save a reference to the player object in the Game object
     theGame.setThePlayer(thePlayer);
 
@@ -163,9 +183,13 @@ public void displayMenuView()
     System.out.println("\nWelcome " + name + " have fun.");
 
     // Display the Game menu
+    //Create a GameMenuView instance called gmv
+    GameMenuView gmv = new GameMenuView();
+        
+    //Call the displayMenuView method of the newly created mmv instance
+    gmv.displayMenuView();
     
-
- }
+}
 
 public void startSavedGame() 
 {
