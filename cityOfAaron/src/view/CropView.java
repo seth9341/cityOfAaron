@@ -19,6 +19,7 @@ public class CropView {
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
     
+    
     //The runCropsView method()
     //Purpose: runs the CropView methods in the correct order when the user
     //selects "Manage Crops" from the Game menu;
@@ -28,6 +29,9 @@ public class CropView {
     {
         //call the buyLandView() method
         buyLandView();
+        
+        //call the feedPeopleView() method
+        feedPeopleView();
     }
             
     
@@ -37,12 +41,12 @@ public class CropView {
     //Returns: none
     public static void buyLandView()
     {
-        //Get the cost of land for this round.
+        //Get the cost to buy land for this round.
         int price = CropControl.calcLandCost();
         
         //Prompt the user to enter the number of acres to buy.
         System.out.format("Land is selling for %d bushels per acre.%n",price);
-        System.out.print("\nHow many acres of land do you wish to buys?");
+        System.out.print("\nHow many acres of land do you wish to buy? ");
         
         //Get the user's input and save it.
         int toBuy = keyboard.nextInt();
@@ -50,5 +54,28 @@ public class CropView {
         //Call the buyland() method in the control layer to buy the land.
         CropControl.buyLand(price, toBuy, cropData);
     }
+    
+    //The feedPeopleView method
+    //Author: Bruce Montgomery
+    //Purpose:  Find out how much wheat to set aside to feed the people
+    //Parameters: none
+    //Returns: none
+    public static void feedPeopleView()
+    {
+        //Get the total number of people in the city.
+        int people = cropData.getpopulation();
+        
+        //Prompt the user to enter the number of acres to sell.
+        System.out.println();
+        System.out.println("The current population in the City of Aaron is " + people);
+        System.out.print("\nHow many bushels of wheat would you like to allocate for feeding the people? ");
+        
+        //Get the user's input and saves it the toSell variable.
+        int toSell = keyboard.nextInt();
+        
+        //Call the feedPeople() method in the control layer to feed the people. Passes the toSell, and cropData parameters
+        CropControl.feedPeople(toSell, cropData);
+    }
+    
     
 }
