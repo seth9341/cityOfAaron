@@ -132,7 +132,7 @@ public void moveToNewLocation()
 
 public void manageCrops()
 {
-    System.out.println("Called manageCrops method.");
+    CropView.runCropsView();
 }
 
 public void mainMenuView()
