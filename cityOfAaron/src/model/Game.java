@@ -16,7 +16,9 @@ public class Game implements Serializable{
     
    //class instance variables
     private Player thePlayer;
-     
+    
+   //variable for keeping a reference to a CropData object
+    private CropData cropData = null;
     
   //class constructor
     public Game() {
@@ -28,5 +30,20 @@ public class Game implements Serializable{
 
     public void setThePlayer(Player thePlayer) {
         this.thePlayer = thePlayer;
+    }
+   //the getCropData() method
+   //Purpose:  get a reference to the crop object
+   //Parameters: none
+   //Returns: a reference to a crop object
+    public CropData getCropData() {
+        return cropData;
+    }
+    
+   //the setCropData() method
+   //Purpose:  store a reference to a crop object
+   //Parameters: a reference to a crop object
+   //Returns: none
+    public void setCropData(CropData cropData) {
+        this.cropData = cropData;
     }
 }
