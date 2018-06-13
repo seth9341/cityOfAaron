@@ -88,12 +88,14 @@ public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
 {
 //  If acresToBuy < 0, return -1
     if(acresToBuy < 0) {
+        System.out.println("Please enter a positive value");
         return -1;
     }
 //  If acresToBuy * landPrice  > wheatInStore, return -1
     int wheat = cropData.getwheatInStore();
       
     if(acresToBuy * landPrice > wheat) {
+        System.out.println("You don't have enought wheat to purchase this amount of land");
         return -1;
     }
 //  If (acresToBuy + acresOwned)/10 > population, return -1
@@ -101,6 +103,7 @@ public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
     int pop = cropData.getpopulation();
       
     if((acresToBuy + owned)/10 > pop) {
+        System.out.println("You don't have enough people to tend this much land");
         return -1;
     }
 //  acresOwned = acresOwned + acresToBuy
