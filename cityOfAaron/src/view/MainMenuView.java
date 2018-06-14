@@ -195,7 +195,11 @@ public void startSavedGame()
 
 public void displayHelpMenuView()
 {
-    System.out.println("Called displayHelpMenuView method.");
+    //Display the Help Menu by creating an instance of the HelpMenuView class called hmv
+    HelpMenuView hmv = new HelpMenuView();
+    
+    //Call the displayMenuView method of the newly created hmv instance
+    hmv.displayMenuView();
 }
 
 public void displaySaveGameView()
