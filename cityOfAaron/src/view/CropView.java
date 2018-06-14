@@ -32,8 +32,14 @@ public class CropView {
         //call the buyLandView() method
         buyLandView();
         
+        //call the sellLandView() method
+        sellLandView();
+        
         //call the feedPeopleView() method
         feedPeopleView();
+        
+        //call the plantCropsView() method
+        plantCropsView();
     }
             
     
