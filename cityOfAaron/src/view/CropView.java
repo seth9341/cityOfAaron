@@ -94,4 +94,21 @@ public class CropView {
         //Call the sellLand() method in the control layer to sell the land.
         CropControl.sellLand(price, toSell, cropData);
     }
+    
+    //The plantCropsView method
+    //Author: Seth Huntley
+    //Purpose: interface with the user input for planting crops
+    //Parameters: none
+    //Returns: none  
+    public static void plantCropsView()
+    {
+        // Prompt the user for the amount of wheat to plant
+        System.out.println("How much wheat would you like to plant? ");
+        
+        // Get input from the user and save it
+        int acresPlanted = keyboard.nextInt();
+        
+        // Call the plantCrops() method to plant crops to harvest.
+        CropControl.plantCrops(acresPlanted, cropData);
+    }   
 }
