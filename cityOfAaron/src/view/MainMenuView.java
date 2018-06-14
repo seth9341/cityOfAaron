@@ -11,10 +11,7 @@ import model.Player;
 import model.Game;
 import model.CropData;
 
-/**
- *
- * @author Stanely
- */
+
 public class MainMenuView 
 {
     private static Scanner keyboard = new Scanner(System.in);
