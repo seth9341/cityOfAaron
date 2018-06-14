@@ -35,98 +35,98 @@ public class CropData implements Serializable {
             public int getyear() {
                     return year;
             }
-            public void setyear(int _year) {
-                    year = _year;
+            public void setyear(int year) {
+                    this.year = year;
             }
             public int getpopulation() {
                     return population;
             }
-            public void setpopulation(int _population) {
-                    population = _population;
+            public void setpopulation(int population) {
+                    this.population = population;
             }
             public int getacresOwned() {
                     return acresOwned;
             }
-            public void setacresOwned(int _acresOwned) {
-                    acresOwned = _acresOwned;
+            public void setacresOwned(int acresOwned) {
+                    this.acresOwned = acresOwned;
             }
             public int getcropYield() {
                     return cropYield;
             }
-            public void setcropYield(int _cropYield) {
-                    cropYield = _cropYield;
+            public void setcropYield(int cropYield) {
+                    this.cropYield = cropYield;
             }
             public int getwheatInStore() {
                     return wheatInStore;
             }
-            public void setwheatInStore(int _wheatInStore) {
-                    wheatInStore = _wheatInStore;
+            public void setwheatInStore(int wheatInStore) {
+                    this.wheatInStore = wheatInStore;
             }
             public int getnumberWhoDied() {
                     return numberWhoDied;
             }
-            public void setnumberWhoDied(int _numberWhoDied) {
-                    numberWhoDied = _numberWhoDied;
+            public void setnumberWhoDied(int numberWhoDied) {
+                    this.numberWhoDied = numberWhoDied;
             }
             public int getnewPeople() {
                     return newPeople;
             }
-            public void setnewPeople(int _newPeople) {
-                    newPeople = _newPeople;
+            public void setnewPeople(int newPeople) {
+                    this.newPeople = newPeople;
             }
             public int getharvest() {
                     return harvest;
             }
-            public void setharvest(int _harvest) {
-                    harvest = _harvest;
+            public void setharvest(int harvest) {
+                    this.harvest = harvest;
             }
             public int getharvestAfterOffering() {
                     return harvestAfterOffering;
             }
-            public void setharvestAfterOffering(int _harvestAfterOffering) {
-                    harvestAfterOffering = _harvestAfterOffering;
+            public void setharvestAfterOffering(int harvestAfterOffering) {
+                    this.harvestAfterOffering = harvestAfterOffering;
             }
             public int getoffering() {
                     return offering;
             }
-            public void setoffering(int _offering) {
-                    offering = _offering;
+            public void setoffering(int offering) {
+                    this.offering = offering;
             }
             public int getofferingBushels() {
                     return offeringBushels;
             }
-            public void setofferingBushels(int _offeringBushels) {
-                    offeringBushels = _offeringBushels;
+            public void setofferingBushels(int offeringBushels) {
+                    this.offeringBushels = offeringBushels;
             }
             public int getpeopleFed() {
                     return peopleFed;
             }
-            public void setpeopleFed(int _peopleFed) {
-                    peopleFed = _peopleFed;
+            public void setpeopleFed(int peopleFed) {
+                    this.peopleFed = peopleFed;
             }
             public int getacresPlanted() {
                     return acresPlanted;
             }
-            public void setacresPlanted(int _acresPlanted) {
-                    acresPlanted = _acresPlanted;
+            public void setacresPlanted(int acresPlanted) {
+                    this.acresPlanted = acresPlanted;
             }
             public int getnumStarved() {
                     return numStarved;
             }
-            public void setnumStarved(int _numStarved) {
-                    numStarved = _numStarved;
+            public void setnumStarved(int numStarved) {
+                    this.numStarved = numStarved;
             }
             public int geteatenByRats() {
                     return eatenByRats;
             }
-            public void seteatenByRats(int _eatenByRats) {
-                    eatenByRats = _eatenByRats;
+            public void seteatenByRats(int eatenByRats) {
+                    this.eatenByRats = eatenByRats;
             }
             public int getwheatForPeople() {
                     return wheatForPeople;
             }
-            public void setwheatForPeople(int _wheatForPeople) {
-                    wheatForPeople = _wheatForPeople;
+            public void setwheatForPeople(int wheatForPeople) {
+                    this.wheatForPeople = wheatForPeople;
             }
 
 }
