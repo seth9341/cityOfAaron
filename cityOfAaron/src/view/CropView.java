@@ -110,5 +110,19 @@ public class CropView {
         
         // Call the plantCrops() method to plant crops to harvest.
         CropControl.plantCrops(acresPlanted, cropData);
-    }   
+    }
+    
+    //The showStarvedView method
+    //Author: Seth Huntley
+    //Purpose: determine how many people starved because of poor planning
+    //Parameters: none
+    //Returns: none
+     public static void showStarvedView(){
+    //How many people starved due to your choices? 
+     int starved = cropData.getnumStarved();
+           System.out.println("\n" + starved + " people have starved due to your leaderships!");
+                 
+    } 
+
+
 }
