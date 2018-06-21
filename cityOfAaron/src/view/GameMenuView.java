@@ -68,8 +68,8 @@ public void displayMenuView()
     {
         // declare a variable to hold user’s input
         int userInput;
-
-        // begin loop
+        
+        //begin loop         
         do
         {
         // get user input from the keyboard
@@ -87,7 +87,7 @@ public void displayMenuView()
         // return the value input by the user
         return userInput;
         
-    }
+    }  
     // The doAction method
     // Purpose: performs the selected action
     // Parameters: none
@@ -112,7 +112,7 @@ public void displayMenuView()
             case 5:
                 mainMenuView();
         }
-
+                
     }
     
 public void viewMap() 
@@ -139,7 +139,6 @@ public void mainMenuView()
 {
     System.out.println("Return to main menu method");
 }        
-
 
 }
 

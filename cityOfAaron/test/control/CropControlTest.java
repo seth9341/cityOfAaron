@@ -191,7 +191,7 @@ public class CropControlTest {
         
          //--- Test case 1 ---
         System.out.println("\tTest case 1");
-        theCrops.setwheatInStore(2450);
+        theCrops.setwheatInStore(2700);
         theCrops.setacresOwned(1000);
         int acresToPlant = 500;
         int expResult = 500;
@@ -236,7 +236,7 @@ public class CropControlTest {
         
          //--- Test case 6 ---
         System.out.println("\tTest case 6");
-        theCrops.setwheatInStore(2200);
+        theCrops.setwheatInStore(2700);
         theCrops.setacresOwned(1000);
         acresToPlant = 1000;
         expResult = 1000;
