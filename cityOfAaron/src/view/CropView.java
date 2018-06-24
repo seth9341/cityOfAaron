@@ -127,7 +127,7 @@ public class CropView {
      public static void showStarvedView(){
     //How many people starved due to your choices? 
      int starved = cropData.getnumStarved();
-           System.out.println("\n" + starved + " people have starved due to your leaderships!");
+           System.out.println("\n" + starved + " people have starved due to your incompetance!");
                  
     } 
 
