@@ -5,11 +5,6 @@
 //-------------------------------------------------------------
 package view;
 
-import java.util.Scanner;
-import cityofaaron.CityOfAaron;
-import model.Player;
-import model.Game;
-import model.CropData;
 import control.GameControl;
 
 
@@ -67,14 +62,7 @@ public MainMenuView()
     // ===================================     
  public void startNewGame()
  {
-    /*
-     /Create a new Game object.
-    Game theGame = new Game();
-
-    // Save a reference to it in the GameProject class.
-    CityOfAaron.setTheGame(theGame);
-    */
-
+ 
     // Display the Banner Page.
     System.out.println("\nWelcome to the best city on planet earth, the city of Aaron. \n"
             + "You have been commissioned here by the High Priest \n"
@@ -85,8 +73,6 @@ public MainMenuView()
             + "If you fail to provide enough wheat for the people, people will starve,  \n"
             + "some people will die, and your workforce will be diminished. Plan \n"
             + "carefully. And Oh, there is always a danger of rats eating your wheat. Freaking rats.");
-
-
 
     // Prompt for and get the user’s name.
     String name;
