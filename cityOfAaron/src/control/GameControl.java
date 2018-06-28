@@ -157,37 +157,37 @@ public class GameControl {
         String court = "\nYou've found yourself in the Ruler's Court" +
                 "\nbeware lest you offend him with your manners!";
 
-       //set The Ruler's Court location
-       loc = new Location();
-       loc.setDescription(court);
-       loc.setSymbol("$$$");
+        //set The Ruler's Court location
+        loc = new Location();
+        loc.setDescription(court);
+        loc.setSymbol("$$$");
 
-      // set this location object in row 0 in column 1
-      {
-        theMap.setLocation(0, 1, loc);
-      }
+        // set this location object in row 0 in column 1
+        {
+          theMap.setLocation(0, 1, loc);
+        }
 
         // define the string for the Granary and Storehouse
         String granary = "\nYou've found a granary and storehouse" +
                 "\nthis is where your crops will be stored after the harvest";
 
-       // set the location for the granary and storehouse
-       loc = new Location();
-       loc.setDescription(granary);
-       loc.setSymbol("|||");
+        // set the location for the granary and storehouse
+        loc = new Location();
+        loc.setDescription(granary);
+        loc.setSymbol("|||");
 
-      // set this location object in row 1 in column 1
-      {
-        theMap.setLocation(1, 1, loc);
-      }
+        // set this location object in row 1 in column 1
+        {
+          theMap.setLocation(1, 1, loc);
+        }
 
         //define the string for the village location
         String village = "\nYou found the village!";
 
-      // set the location for the village
-      loc = new Location();
-      loc.setDescription(village + "20 Bushels to feed 1 person");
-      loc.setSymbol("^^^");
+        // set the location for the village
+        loc = new Location();
+        loc.setDescription(village + "20 Bushels to feed 1 person");
+        loc.setSymbol("^^^");
       
         //set this location object in row 2, 3 & in column 1
         for(int i =2; i<4; i++)
@@ -199,10 +199,10 @@ public class GameControl {
         String border = "\nThis is the border of the land with the Lamanites!" +
                 "\nBe careful about hanging around here";
 
-      // set the location for the Lamanite Land border
-      loc = new Location();
-      loc.setDescription(border);
-      loc.setSymbol(":(:(");
+        // set the location for the Lamanite Land border
+        loc = new Location();
+        loc.setDescription(border);
+        loc.setSymbol(":(:(");
       
         //set this location object in row 3, 4 & in column 0
         for(int i =3; i<5; i++)
@@ -213,16 +213,48 @@ public class GameControl {
         //define the string for Undeveloped land
         String undeveloped = "\nThis area isn't developed yet.";
 
-      // set the location for the village
-      loc = new Location();
-      loc.setDescription(undeveloped);
-      loc.setSymbol("MMM");
+        // set the location for the village
+        loc = new Location();
+        loc.setDescription(undeveloped);
+        loc.setSymbol("MMM");
       
         //set this location object in row 4 &  column 1, 2, & 3
-        for(int i =0; i<4; i++)
+        for(int i =1; i<4; i++)
         {
             theMap.setLocation(4, i, loc);
         }
+        
+        //define the string for the Rameumpton historical location
+        String rameumpton = "\nYou are on the site of an historical reprsentation of the Rameumpton" +
+                "\nThis historical replication of the Rameumpton reminds the people of the city of Aaron" +
+                "\nthat following Gods commandments will keep them safe.";
+        
+        //set the Rameumpton location
+        loc = new Location();
+        loc.setDescription(rameumpton);
+        loc.setSymbol("***");
+        theMap.setLocation(1,2, loc);
+        
+        //define the string for the Outdoor amphitheater location
+        String amphitheater = "\nYou are in a natural amphitheater where the people of the city of Aaron" +
+                "\nand people from all across the land come to be entertained by some of the greatest traveling" +
+                "\ntheatrical groups in the Land of the Nephites.";
+        
+        //set the Amphitheater location
+        loc = new Location();
+        loc.setDescription(amphitheater);
+        loc.setSymbol("###");
+        theMap.setLocation(2,2, loc);
+        
+        //define the string for the soldiers quarters location
+        String soldierQuarters = "\nHere you see the quarters where soldiers are housed in times of war." +
+        "\nIn times of war there areas for medical treatment, training and downtime.";
+        
+        //set the soldiers quarters location
+        loc = new Location();
+        loc.setDescription(soldierQuarters);
+        loc.setSymbol("&&&");
+        theMap.setLocation(1,2, loc);
         
         theGame.setTheMap(theMap);
     }
