@@ -219,7 +219,9 @@ public class GameControl {
         {
             theMap.setLocation(4, i, loc);
         }
-      
-
+theGame.setMap(theMap);
     }
+    
 }
+
+
