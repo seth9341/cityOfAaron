@@ -152,7 +152,80 @@ public class GameControl {
         {
             theMap.setLocation(i, 0, loc);
         }
-            
         
-    }    
+        // define the string for the Ruler's Court
+        String court = "\nYou've found yourself in the Ruler's Court" +
+                "\nbeware lest you offend him with your manners!";
+
+       //set The Ruler's Court location
+       loc = new Location();
+       loc.setDescription(court);
+       loc.setSymbol("$$$");
+
+      // set this location object in row 0 in column 1
+      {
+        theMap.setLocation(0, 1, loc);
+      }
+
+        // define the string for the Granary and Storehouse
+        String granary = "\nYou've found a granary and storehouse" +
+                "\nthis is where your crops will be stored after the harvest";
+
+       // set the location for the granary and storehouse
+       loc = new Location();
+       loc.setDescription(granary);
+       loc.setSymbol("|||");
+
+      // set this location object in row 1 in column 1
+      {
+        theMap.setLocation(1, 1, loc);
+      }
+
+        //define the string for the village location
+        String village = "\nYou found the village!";
+
+      // set the location for the village
+      loc = new Location();
+      loc.setDescription(village + "20 Bushels to feed 1 person");
+      loc.setSymbol("^^^");
+      
+        //set this location object in row 2, 3 & in column 1
+        for(int i =2; i<4; i++)
+        {
+            theMap.setLocation(i, 1, loc);
+        }
+      
+        //define the string for the Lamanite Land Border
+        String border = "\nThis is the border of the land with the Lamanites!" +
+                "\nBe careful about hanging around here";
+
+      // set the location for the Lamanite Land border
+      loc = new Location();
+      loc.setDescription(border);
+      loc.setSymbol(":(:(");
+      
+        //set this location object in row 3, 4 & in column 0
+        for(int i =3; i<5; i++)
+        {
+            theMap.setLocation(i, 0, loc);
+        }
+      
+        //define the string for Undeveloped land
+        String undeveloped = "\nThis area isn't developed yet.";
+
+      // set the location for the village
+      loc = new Location();
+      loc.setDescription(undeveloped);
+      loc.setSymbol("MMM");
+      
+        //set this location object in row 4 &  column 1, 2, & 3
+        for(int i =0; i<4; i++)
+        {
+            theMap.setLocation(4, i, loc);
+        }
+theGame.setMap(theMap);
+    }
+    
 }
+
+
