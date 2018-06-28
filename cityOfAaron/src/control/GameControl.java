@@ -191,6 +191,21 @@ public class GameControl {
             theMap.setLocation(i, 1, loc);
         }
       
+        //define the string for the Lamanite Land Border
+        String border = "\nThis is the border of the land with the Lamanites!" +
+                "\nBe careful about hanging around here";
+
+      // set the location for the Lamanite Land border
+      loc = new Location();
+      loc.setDescription(border);
+      loc.setSymbol(":(:(");
+      
+        //set this location object in row 3, 4 & in column 0
+        for(int i =3; i<5; i++)
+        {
+            theMap.setLocation(i, 0, loc);
+        }
+      
 
     }
 }
