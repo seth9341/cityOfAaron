@@ -5,10 +5,15 @@
 //-------------------------------------------------------------
 package view;
 
+import model.*;
+import cityofaaron.*;
+import java.util.ArrayList;
 
 public class ListMenuView extends MenuView {
     
-        
+    //getTheGame and assign to theGame. Will be used by the viewlist methods
+    Game theGame = CityOfAaron.getTheGame();
+           
 // The ListView constructor
 // Purpose: Initialize the game menu data
 // Parameters: none
@@ -66,10 +71,12 @@ public void viewDevTeam()
 //Parameters: none
 //Returns: none
 public void viewListOfAnimals()
-    //for (int i = 0; i < animals.size(); i++)
 {
-    //ListItem animals = animals.get(1);
-    //System.out.println(li.getName() + ": " + li.getNumber());
+    ArrayList<ListItem> animals = theGame.getAnimals();
+    for(ListItem n: animals){
+        System.out.println("There are " + n.getNumber() + " " + n.getName());
+    }
+    
 }
 
 public void viewListOfTools()
