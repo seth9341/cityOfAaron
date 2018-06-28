@@ -20,6 +20,9 @@ public class Game implements Serializable{
    //variable for keeping a reference to a CropData object
     private CropData cropData = null;
     
+   //variable for keeping a reference to the animals ListItem object
+    private ListItem animals = null;
+    
   //class constructor
     public Game() {
     }
@@ -46,4 +49,13 @@ public class Game implements Serializable{
     public void setCropData(CropData cropData) {
         this.cropData = cropData;
     }
+
+    public ListItem getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ListItem animals) {
+        this.animals = animals;
+    }
+    
 }

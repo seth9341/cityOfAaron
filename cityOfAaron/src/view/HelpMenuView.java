@@ -10,11 +10,7 @@ import java.util.Scanner;
 
 public class HelpMenuView extends MenuView {
     
-    //Create a Scanner object
-    private static Scanner keyboard = new Scanner(System.in);
-    private String theMenu;
-    private int max;
-        
+
 // The HelpMenuView constructor
 // Purpose: Initialize the game menu data
 // Parameters: none

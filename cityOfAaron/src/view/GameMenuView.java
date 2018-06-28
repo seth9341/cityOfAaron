@@ -19,7 +19,7 @@ public GameMenuView()
 {
         super("\n" +
                    "**********************************\n" +
-                   "* GAME MENU                      *\n" +
+                   "* CITY OF AARON: GAME MENU       *\n" +
                    "**********************************\n" +
                    " 1 - View the map\n" +
                    " 2 - View/Print a list\n" +
@@ -38,19 +38,19 @@ public GameMenuView()
     {
         switch(option)
         {
-            case 1: // create and start a new game
+            case 1: // View the map
                 viewMap();
                 break;
-            case 2: // get and start a saved game
+            case 2: // View a list
                 viewList();
                 break;
-            case 3: // get help menu
+            case 3: // Move to a new location
                 moveToNewLocation();
                 break;
-            case 4: // save game
+            case 4: // Manage the Crops
                 manageCrops();
                 break;
-            case 5:
+            case 5: // Return to the Main Menu
                 mainMenuView();
         }
                 
@@ -61,9 +61,15 @@ public void viewMap()
     System.out.println("Called viewMap method.");
 }
 
+//The viewList() method
+//Purpose: Creates a ViewList object and calls its
+//displayMenuView() method
+//Parameters: none
+//Returns: none
 public void viewList()
 {
-    System.out.println("Called viewList method.");
+    ListMenuView lv = new ListMenuView();
+    lv.displayMenuView();
 }
 
 public void moveToNewLocation()

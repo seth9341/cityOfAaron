@@ -51,7 +51,7 @@ public class CityOfAaron {
         
        
        //added by Bruce to test the ListItem Class 
-        ListItem shovel = new ListItem( );
+        ListItem shovel = new ListItem();
         shovel.setName("shovel");
         shovel.setNumber(5);
         System.out.println(shovel.toString());

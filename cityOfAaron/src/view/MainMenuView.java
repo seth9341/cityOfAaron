@@ -10,6 +10,7 @@ import cityofaaron.CityOfAaron;
 import model.Player;
 import model.Game;
 import model.CropData;
+import control.GameControl;
 
 
 public class MainMenuView extends MenuView 
@@ -66,11 +67,13 @@ public MainMenuView()
     // ===================================     
  public void startNewGame()
  {
-    //Create a new Game object.
+    /*
+     /Create a new Game object.
     Game theGame = new Game();
 
     // Save a reference to it in the GameProject class.
     CityOfAaron.setTheGame(theGame);
+    */
 
     // Display the Banner Page.
     System.out.println("\nWelcome to the best city on planet earth, the city of Aaron. \n"
@@ -83,49 +86,25 @@ public MainMenuView()
             + "some people will die, and your workforce will be diminished. Plan \n"
             + "carefully. And Oh, there is always a danger of rats eating your wheat. Freaking rats.");
 
-    // Create a new Player object
-    Player thePlayer = new Player();
+
 
     // Prompt for and get the user’s name.
     String name;
     System.out.println("\nPlease type in your first name: ");
     name = keyboard.next();
     
-    // Save the user’s name in the Player object
-    thePlayer.setName(name);
+    //welcome message
+    System.out.println("\nWelcome " + name + ", have fun playing.");
     
-    //Create a CropData object
-    CropData cropData = new CropData();
-   
-    //initialize new CropData object
-    cropData.setyear(0);
-    cropData.setpopulation(100);
-    cropData.setnewPeople(5);
-    cropData.setcropYield(3);
-    cropData.setnumberWhoDied(0);
-    cropData.setoffering(10);
-    cropData.setwheatInStore(2700);
-    cropData.setacresOwned(1000);
-    cropData.setacresPlanted(1000);
-    cropData.setharvest(3000);
-    cropData.setofferingBushels(300);
+    //call the createNewGame() method.  Pass the name as a parameter
+    GameControl.createNewGame(name);
     
-    // Save a reference to the CropData object in the Game object
-    theGame.setCropData(cropData);
-    
-    // Save a reference to the player object in the Game object
-    theGame.setThePlayer(thePlayer);
-
-    // Display a welcome message
-    System.out.println("\nWelcome " + name + " have fun.");
-
     // Display the Game menu
     //Create a GameMenuView instance called gmv
     GameMenuView gmv = new GameMenuView();
         
     //Call the displayMenuView method of the newly created mmv instance
     gmv.displayMenuView();
-    
 }
 
 public void startSavedGame() 
