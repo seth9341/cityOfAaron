@@ -28,7 +28,10 @@ public class Game implements Serializable{
     private ArrayList<ListItem>tools = null;
     
     //variable for keeping a reference to the provisions ListItem object
-    private ArrayList<ListItem>provisions = null;    
+    private ArrayList<ListItem>provisions = null;  
+    
+    //variable for keeping a reference to the map Location object
+    private Map theMap;
    
   //class constructor
     public Game() {
@@ -80,6 +83,16 @@ public class Game implements Serializable{
     public void setProvisions(ArrayList<ListItem> provisions) {
         this.provisions = provisions;
     }
+
+    public Map getTheMap() {
+        return theMap;
+    }
+
+    public void setTheMap(Map theMap) {
+        this.theMap = theMap;
+    }
+    
+    
     
        
 }
