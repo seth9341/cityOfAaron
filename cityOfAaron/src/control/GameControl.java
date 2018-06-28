@@ -7,7 +7,6 @@ package control;
 
 import java.util.ArrayList;
 import cityofaaron.CityOfAaron;
-import java.util.HashSet;
 import model.*;
 
 public class GameControl {
@@ -19,7 +18,7 @@ public class GameControl {
     //reference to a Game object
     private static Game theGame;
     
-    public static void createNewGame(String name)
+    public static void createNewGame(String pName)
     {
         //Created the game object. Save it in the main driver file
         theGame = new Game();
@@ -27,7 +26,7 @@ public class GameControl {
 
         //create the player object. Save it in the game object
         Player thePlayer = new Player();
-        thePlayer.setName(name);
+        thePlayer.setName(pName);
         theGame.setThePlayer(thePlayer);
 
         createCropDataObject();
@@ -70,7 +69,7 @@ public class GameControl {
         animals.add(new ListItem("cats", 4));
         animals.add(new ListItem("mules", 3));
         
-       //theGame.setAnimals(animals);
+       theGame.setAnimals(animals);
         
     }
     
@@ -79,11 +78,13 @@ public class GameControl {
     {
         ArrayList<ListItem> tools = new ArrayList<>();
     
-        tools.add(new ListItem("plow", 3));
-        tools.add(new ListItem("shovel", 10));
-        tools.add(new ListItem("wire cutter", 6));
-        tools.add(new ListItem("fence post hole digger", 4));
+        tools.add(new ListItem("plows", 3));
+        tools.add(new ListItem("shovels", 10));
+        tools.add(new ListItem("wire cutters", 6));
+        tools.add(new ListItem("fence post hole diggers", 4));
        
+        theGame.setTools(tools);
+        
     }
     
     //create the list of provisions
@@ -95,6 +96,9 @@ public class GameControl {
         provisions.add(new ListItem("water bottles", 200));
         provisions.add(new ListItem("flour", 400));
         provisions.add(new ListItem("bacon", 300));
+        
+        theGame.setProvisions(provisions);
+        
     }
     
     //The createMap method
