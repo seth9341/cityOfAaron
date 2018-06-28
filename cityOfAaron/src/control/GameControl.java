@@ -148,7 +148,26 @@ public class GameControl {
         {
             theMap.setLocation(i, 0, loc);
         }
-            
         
-    }    
+    
+       //set The Ruler's Court location
+       loc = new Location();
+       loc.setDescription("The Ruler's Court");
+       loc.setSymbol("$$$");
+
+      // set this location object in row 0 in column 1
+      {
+        theMap.setLocation(0, 1, loc);
+      }
+
+       // set the location for the granary and storehouse
+       loc = new Location();
+       loc.setDescription("Granary & Storehouse");
+       loc.setSymbol("|||");
+
+      // set this location object in row 1 in column 1
+      {
+        theMap.setLocation(1, 1, loc);
+      }
+    }
 }
