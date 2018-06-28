@@ -206,6 +206,20 @@ public class GameControl {
             theMap.setLocation(i, 0, loc);
         }
       
+        //define the string for Undeveloped land
+        String undeveloped = "\nThis area isn't developed yet.";
+
+      // set the location for the village
+      loc = new Location();
+      loc.setDescription(undeveloped);
+      loc.setSymbol("MMM");
+      
+        //set this location object in row 4 &  column 1, 2, & 3
+        for(int i =0; i<4; i++)
+        {
+            theMap.setLocation(4, i, loc);
+        }
+      
 
     }
 }
