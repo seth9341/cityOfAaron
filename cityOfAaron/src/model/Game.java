@@ -7,6 +7,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,15 +15,21 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
     
-   //class instance variables
+    //class instance variables
     private Player thePlayer;
     
-   //variable for keeping a reference to a CropData object
+    //variable for keeping a reference to a CropData object
     private CropData cropData = null;
     
-   //variable for keeping a reference to the animals ListItem object
-    private ListItem animals = null;
+    //variable for keeping a reference to the animals ListItem object
+    private ArrayList<ListItem>animals = null;
     
+    //variable for keeping a reference to the tools ListItem object
+    private ArrayList<ListItem>tools = null;
+    
+    //variable for keeping a reference to the provisions ListItem object
+    private ArrayList<ListItem>provisions = null;    
+   
   //class constructor
     public Game() {
     }
@@ -50,12 +57,29 @@ public class Game implements Serializable{
         this.cropData = cropData;
     }
 
-    public ListItem getAnimals() {
+    public ArrayList<ListItem> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(ListItem animals) {
+    public void setAnimals(ArrayList<ListItem> animals) {
         this.animals = animals;
     }
+
+    public ArrayList<ListItem> getTools() {
+        return tools;
+    }
+
+    public void setTools(ArrayList<ListItem> tools) {
+        this.tools = tools;
+    }
+
+    public ArrayList<ListItem> getProvisions() {
+        return provisions;
+    }
+
+    public void setProvisions(ArrayList<ListItem> provisions) {
+        this.provisions = provisions;
+    }
     
+       
 }
