@@ -58,7 +58,4 @@ public class Map
         locations[row][col] = _location;
     }
     
-    
-    
-    
 }
