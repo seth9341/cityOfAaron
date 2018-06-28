@@ -169,5 +169,18 @@ public class GameControl {
       {
         theMap.setLocation(1, 1, loc);
       }
+     
+      // set the location for the village
+      loc = new Location();
+      loc.setDescription("The Village");
+      loc.setSymbol("^^^");
+      
+        //set this location object in row 2, 3 & in column 1
+        for(int i =2; i<4; i++)
+        {
+            theMap.setLocation(i, 1, loc);
+        }
+      
+
     }
 }
