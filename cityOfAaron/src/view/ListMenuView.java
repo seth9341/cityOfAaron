@@ -66,14 +66,14 @@ public void viewDevTeam()
 }
 
 //The viewListOfAnimals() method
-//Purpose: Creates a ViewList object and calls its
-//displayMenuView() method
+//Purpose: to get the list of animals from the
+//current game and print them out to the screen.
 //Parameters: none
 //Returns: none
 public void viewListOfAnimals()
 {
     ArrayList<ListItem> animals = theGame.getAnimals();
-    for(ListItem n: animals){
+        for(ListItem n: animals){
         System.out.println("There are " + n.getNumber() + " " + n.getName());
     }
     
