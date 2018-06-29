@@ -257,7 +257,46 @@ public class GameControl {
         loc = new Location();
         loc.setDescription(soldierQuarters);
         loc.setSymbol("&&&");
-        theMap.setLocation(1,2, loc);
+        theMap.setLocation(3,2, loc);
+        
+        //define the string for the bakery location
+        String bakery = "\nYou are in the bakery where you can smell delicious bread. The people of Aaron" +
+                "\nlove the bakery and the smells bring them joy to their souls.";
+        
+        // set the location of the bakery
+        loc = new Location();
+        loc.setDescription(bakery);
+        loc.setSymbol("@@@");
+        theMap.setLocation(0, 3, loc);        
+        
+        //define the string for the villageGarden location
+        String villageGarden = "\nYou are in the village rose garden. It has lots of colorful roses. " +
+                "\nThe garden is beautiful and hosts many weddings.";
+        
+        // set the location of the villageGarden
+        loc = new Location();
+        loc.setDescription(villageGarden);
+        loc.setSymbol("%%%");
+        theMap.setLocation(1, 3, loc);  
+        
+        //define the string for the temple location
+        String temple = "\nYou are at the temple of doom. Peasants are allowed to worship here." +
+                "\nFrom this temple you can overlook the beautiful rose garden.";
+        
+        // set the location of the temple
+        loc = new Location();
+        loc.setDescription(temple);
+        loc.setSymbol("!**!");
+        theMap.setLocation(2, 3, loc);
+        
+        //define the string for the palace location
+        String palace = "\nYou are at the Palace. This is an ancient Palace used by Emperors for hundreds of years."; 
+        
+        // set the location of the palace
+        loc = new Location();
+        loc.setDescription(palace);
+        loc.setSymbol("##!!");
+        theMap.setLocation(3, 3, loc);
         
         theGame.setTheMap(theMap);
     }
