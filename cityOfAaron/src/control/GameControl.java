@@ -64,10 +64,13 @@ public class GameControl {
     {
         ArrayList<ListItem>animals = new ArrayList<>();
     
-        animals.add(new ListItem("chickens",10));
+        animals.add(new ListItem("chickens",20));
         animals.add(new ListItem("cows", 7));
         animals.add(new ListItem("cats", 4));
         animals.add(new ListItem("mules", 3));
+        animals.add(new ListItem("horses", 11));
+        animals.add(new ListItem("pigs", 15));
+        animals.add(new ListItem("sheep", 17));
         
        theGame.setAnimals(animals);
         
