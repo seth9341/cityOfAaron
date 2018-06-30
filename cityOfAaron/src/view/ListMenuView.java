@@ -84,9 +84,17 @@ public void viewListOfTools()
     System.out.println("Called viewListOfTools method.");
 }
 
+//The viewListOfProvisions() method
+//Purpose: Creates a ViewList object and calls its
+//displayMenuView() method
+//Parameters: none
+//Returns: none
 public void viewListOfProvisions()
 {
-    System.out.println("Called viewListOfProvisions method.");
+    ArrayList<ListItem> provisions = theGame.getProvisions();
+    for(ListItem n: provisions){
+        System.out.println("There are " + n.getNumber() + " " + n.getName());
+    }
 }
 
 public void gameMenuView()
