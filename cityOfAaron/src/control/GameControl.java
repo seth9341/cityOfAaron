@@ -11,7 +11,7 @@ import model.*;
 
 public class GameControl {
     
-    //size of the Locations array
+    //size of the Locations array/map
     private static final int MAX_ROW = 5;
     private static final int MAX_COL = 5;
     
