@@ -41,7 +41,7 @@ public class Map
     }
 
     //The getLocation method
-    //Prupose: returns the location object at the given row and column
+    //Purpose: returns the location object at the given row and column
     //Parameters: a row and column
     //Returns: a Location object
     public Location getLocation(int row, int col)
