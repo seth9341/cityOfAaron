@@ -88,9 +88,17 @@ public void viewListOfAnimals()
     
 }
 
+//The viewListOfTools() method
+//Purpose: Creates a ViewList object and calls its
+//displayMenuView() method
+//Parameters: none
+//Returns: none
 public void viewListOfTools()
 {
-    System.out.println("Called viewListOfTools method.");
+    ArrayList<ListItem> tools = theGame.getTools();
+    for(ListItem n: tools){
+        System.out.println("There are " + n.getNumber() + " " + n.getName());
+    }
 }
 
 //The viewListOfProvisions() method
