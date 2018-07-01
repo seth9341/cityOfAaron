@@ -32,6 +32,11 @@ public class Game implements Serializable{
     
     //variable for keeping a reference to the map Location object
     private Map theMap;
+    
+    //variable for keeping a reference to the developersListItem object
+    private ArrayList<ListItem>developers = null;  
+    
+    
    
   //class constructor
     public Game() {
@@ -91,7 +96,15 @@ public class Game implements Serializable{
     public void setTheMap(Map theMap) {
         this.theMap = theMap;
     }
-    
+
+    public ArrayList<ListItem> getDevelopers() {
+        return developers;
+    }
+
+    public void setDevelopers(ArrayList<ListItem> developers) {
+        this.developers = developers;
+    }
+
     
     
        

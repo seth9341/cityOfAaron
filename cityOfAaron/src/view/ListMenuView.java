@@ -60,9 +60,12 @@ public ListMenuView()
                 
     }
     
-public void viewDevTeam() 
+public void viewDevTeam()
 {
-    System.out.println("Called viewDevTeam method.");
+    ArrayList<ListItem> developers = theGame.getDevelopers();
+    for(ListItem n: developers){
+        System.out.println("The members of the development team are " + n.getName());
+    }
 }
 
 //The viewListOfAnimals() method
