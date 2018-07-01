@@ -104,8 +104,6 @@ public class Game implements Serializable{
     public void setDevelopers(ArrayList<ListItem> developers) {
         this.developers = developers;
     }
-
-    
     
        
 }
