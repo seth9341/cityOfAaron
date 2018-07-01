@@ -60,6 +60,12 @@ public ListMenuView()
                 
     }
     
+
+//The viewDevTeam() method
+//Purpose: Creates a ViewList object and calls its
+//displayMenuView() method
+//Parameters: none
+//Returns: none
 public void viewDevTeam()
 {
     ArrayList<ListItem> developers = theGame.getDevelopers();
