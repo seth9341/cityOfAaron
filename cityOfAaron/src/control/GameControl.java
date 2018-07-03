@@ -34,6 +34,7 @@ public class GameControl {
         createToolList();
         createProvisionList();
         createMap();
+        createDevTeam();
     }
   
     //create the CropData object method
@@ -99,10 +100,27 @@ public class GameControl {
         provisions.add(new ListItem("water bottles", 200));
         provisions.add(new ListItem("flour", 400));
         provisions.add(new ListItem("bacon", 300));
-        
+        provisions.add(new ListItem("cloth", 10000));
+
         theGame.setProvisions(provisions);
         
     }
+
+
+    //create the list of developers
+    public static void createDevTeam()
+    {
+        ArrayList<ListItem> developers = new ArrayList<>();
+        
+        developers.add(new ListItem("Bruce Montgomery", 1));
+        developers.add(new ListItem("Stanley Varner", 1));
+        developers.add(new ListItem("Seth Huntley", 1));
+
+        theGame.setDevelopers(developers);
+        
+    }
+
+
     
     //The createMap method
     //Purpose: creates the location objects and the map
