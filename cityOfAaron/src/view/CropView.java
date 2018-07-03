@@ -7,6 +7,7 @@ package view;
 
 import model.*;
 import control.*;
+import exceptions.CropException;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 
@@ -18,9 +19,8 @@ public class CropView {
     //Get references to the Game object and the CropData object
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
-    //store price variable here so the buyLandView and sellLandView methods can
-    //use the same value
-    private static int price = CropControl.calcLandCost();
+    //declare the price variable here for the buyLandView and sellLandView methods
+    private static int price;
     
     //The runCropsView method()
     //Purpose: runs the CropView methods in the correct order when the user
@@ -50,16 +50,36 @@ public class CropView {
     public static void buyLandView()
     {
         int price = CropControl.calcLandCost();
+        int currentAcresOwned = cropData.getacresOwned();
         
-        //Prompt the user to enter the number of acres to buy.
+        //Let the user know how much land they currently own and how much it is
+        //currently selling for.
+        System.out.println("You currently have " + currentAcresOwned + " acres of land.");
         System.out.format("Land is selling for %d bushels per acre.%n",price);
-        System.out.print("\nHow many acres of land do you wish to buy? ");
+        
         
         //Get the user's input and save it.
-        int toBuy = keyboard.nextInt();
+        int toBuy;
+        boolean paramsNotOkay;
         
-        //Call the buyland() method in the control layer to buy the land.
-        CropControl.buyLand(price, toBuy, cropData);
+        do
+        {
+            paramsNotOkay = false;
+            //Prompt the user to enter the number of acres to buy
+            System.out.print("\nHow many acres of land do you wish to buy? ");
+            toBuy = keyboard.nextInt();
+            try  //the try block
+            {    
+                //Call the buyland() method in the control layer to buy the land.
+                CropControl.buyLand(price, toBuy, cropData);
+            }
+            catch(CropException e)  //the catch block
+            {
+                System.out.println("I am sorry , I cannot do this. Try again.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        }while(paramsNotOkay);
     }
     
     //The feedPeopleView method
