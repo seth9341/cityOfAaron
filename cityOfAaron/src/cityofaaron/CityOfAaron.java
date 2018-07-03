@@ -41,7 +41,7 @@ public class CityOfAaron {
         // Call the displayMenuView method of the newly created mmv instance
         mmv.displayMenuView();
         
-        
+    /* 
         Player playerOne = new Player();
         
         playerOne.setName("Alma");
@@ -76,7 +76,7 @@ public class CityOfAaron {
         testHarvestCrops.setoffering(13);
         testHarvestCrops.setacresPlanted(500);
         System.out.println("The calculated crop yield is " + CropControl.harvestCrops(testHarvestCrops));
-    
+    */
                 
     }
     
