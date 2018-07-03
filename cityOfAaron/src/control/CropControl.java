@@ -8,6 +8,7 @@
 package control;
 
 import model.CropData;
+import exceptions.CropException;
 import java.util.Random;
 
 
@@ -84,38 +85,38 @@ public static int calcLandCost()
 * The player must have enough wheat to purchase the number of acres desired.
 * The city must have enough people to tend the land.
 */
-public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
+public static void buyLand(int landPrice, int acresToBuy, CropData cropData) throws CropException
 {
-//  If acresToBuy < 0, return -1
+//  If acresToBuy < 0, throw exception
     if(acresToBuy < 0) {
-        System.out.println("Please enter a positive value");
-        return -1;
+        throw new CropException("A negative value was input");
     }
-//  If acresToBuy * landPrice  > wheatInStore, return -1
+//  get the current amount of wheatInStore and assign it to the wheat variable.
     int wheat = cropData.getwheatInStore();
-      
+    
+//  If acresToBuy * landPrice  > wheatInStore, throw exception      
     if(acresToBuy * landPrice > wheat) {
-        System.out.println("You don't have enought wheat to purchase this amount of land");
-        return -1;
+        throw new CropException("There is insufficient wheat to buy this much land.");
     }
-//  If (acresToBuy + acresOwned)/10 > population, return -1
+
+//  get the 
     int owned = cropData.getacresOwned();
     int pop = cropData.getpopulation();
-      
+    
+//  If (acresToBuy + acresOwned)/10 > population, throw exception      
     if((acresToBuy + owned)/10 > pop) {
-        System.out.println("You don't have enough people to tend this much land");
-        return -1;
+        throw new CropException("You don't have enough people to tend this much land");
     }
-//  acresOwned = acresOwned + acresToBuy
+//  add the number of acres to buy to the current number of acres owned
     owned += acresToBuy;
     cropData.setacresOwned(owned);
       
-//  wheatInStore = wheatInStore – (acresToBy * landPrice
+//  deduct cost from the wheat in store
     wheat -= acresToBuy * landPrice;
     cropData.setwheatInStore(wheat);
       
 //  return acresOwned
-    return owned;
+ //   return owned;
 }
 
 
