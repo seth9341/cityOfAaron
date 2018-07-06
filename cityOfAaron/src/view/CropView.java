@@ -111,15 +111,28 @@ public class CropView {
     //Returns: none
     public static void sellLandView()
     {
-               
-        //Prompt the user to enter the number of acres to sell.
-        System.out.print("How many acres of new land do you want sell? ");
+        boolean paramsNotOkay;
+        do
+        {
+            paramsNotOkay = false;
+            //Prompt the user to enter the number of acres to sell.
+            System.out.print("How many acres of new land do you want sell? ");
         
-        //Get the user's input and save it.
-        int toSell = keyboard.nextInt();
-        
-        //Call the sellLand() method in the control layer to sell the land.
-        CropControl.sellLand(price, toSell, cropData);
+            //Get the user's input and save it.
+            int toSell = keyboard.nextInt();
+            
+            try
+            {        
+                //Call the sellLand() method in the control layer to sell the land.
+                CropControl.sellLand(price, toSell, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        }while (paramsNotOkay);
     }
     
     //The plantCropsView method
@@ -129,15 +142,32 @@ public class CropView {
     //Returns: none  
     public static void plantCropsView()
     {
-        // Prompt the user for the amount of wheat to plant
-        System.out.println("How much wheat would you like to plant? ");
+        boolean paramsNotOkay;
+        do
+        {
+            paramsNotOkay = false;               
+            // Prompt the user for the amount of wheat to plant
+            System.out.println("How much wheat would you like to plant? ");
         
-        // Get input from the user and save it
-        int acresPlanted = keyboard.nextInt();
+            // Get input from the user and save it
+            int acresPlanted = keyboard.nextInt();
         
-        // Call the plantCrops() method to plant crops to harvest.
-        CropControl.plantCrops(acresPlanted, cropData);
+            try
+            {
+                // Call the plantCrops() method to plant crops to harvest.
+                CropControl.plantCrops(acresPlanted, cropData);
+            }
+        
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        }while(paramsNotOkay);
     }
+        
+            
     
     //The showStarvedView method
     //Author: Seth Huntley
