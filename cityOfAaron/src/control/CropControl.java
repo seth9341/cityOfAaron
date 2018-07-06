@@ -1,7 +1,7 @@
 // The CropControl class - part of the control layer
 // class contains all of the calculation methods for managing the crops
 // Author: Seth Huntley, Bruce Montgomery, Stanley Varner
-// Date last modified: 2018.05.30
+// Date last modified: 2018.07.06
 //-------------------------------------------------------------
 
 
@@ -9,6 +9,7 @@ package control;
 
 import model.CropData;
 import exceptions.CropException;
+import exceptions.FeedPeopleException;
 import java.util.Random;
 
 
@@ -122,16 +123,17 @@ public static void buyLand(int landPrice, int acresToBuy, CropData cropData) thr
 * Pre-conditions:  the number of wheat has to be positive.  Check that there's
 * enough wheat to feed the people.
 */
-public static int feedPeople(int wheatForPeople, CropData cropData) {
+public static int feedPeople(int wheatForPeople, CropData cropData) throws FeedPeopleException {
 
-//  check to see if there's any wheatForPeopla at all, and if not, return -1
+// if wheatForPeople is less than 0, throw an exception
     if(wheatForPeople < 0) {
-        return -1;
+        throw new FeedPeopleException("Wheat for People can't be a negative value");
     }
 
     int wheatInStore = cropData.getwheatInStore();
+//  If wheatInStore is less than wheatForPeople throw an exception      
     if (wheatInStore < wheatForPeople ){
-    return -1;
+        throw new FeedPeopleException("There's not enough what in storage to meet the needs of the people.");
 }
     
 //  subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
