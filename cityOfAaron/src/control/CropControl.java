@@ -45,21 +45,20 @@ public static int calcLandCost()
 // The sellLand method
 // Purpose: To sell land
 // Parameters: the price of land, the number of acres to sell, and
-//    a reference to a CropData object
-// Returns: the number of acres owned after the sale
+// a reference to a CropData object
+// Throws and exception if a pre-codition isn't met
 // Pre-conditions: acres to sell must be positive
 // and <= acresOwned
- public static int sellLand(int landPrice, int acresToSell, CropData cropData)
+ public static void sellLand(int landPrice, int acresToSell, CropData cropData) throws CropException
  {
-//  if acresToSell < 0, return -1
+//  if acresToSell < 0, throw exception
     if(acresToSell < 0) {
-        return -1;
+        throw new CropException("A negative value was input.");
     }
-//  if acresToSell > acresOwned, return -1
-    int owned = cropData.getacresOwned();
-    
+//  if acresToSell > acresOwned, throw exception
+    int owned = cropData.getacresOwned();    
     if(acresToSell > owned) {
-        return -1;
+        throw new CropException("You can't sell more land then you own.");
     }
 //  acresOwned = acresOwned - acresToSell
     owned -= acresToSell;
@@ -69,10 +68,6 @@ public static int calcLandCost()
     int wheat = cropData.getwheatInStore();
     wheat -= (acresToSell * landPrice);
     cropData.setwheatInStore(wheat);
-
-//  return acresOwned
-    return owned;
-
  }
 /**
 * The buyLand method
@@ -80,7 +75,7 @@ public static int calcLandCost()
 *@param landPrice the price of land
 *@param acresToBuy the number of acres to buy.
 *@param cropData reference to a CropData object
-*@return the amount of land after the buy
+*@throws exception based on the precondition that isn't met.
 * Pre-conditions:  the number of acres to be bought must be positive.
 * The player must have enough wheat to purchase the number of acres desired.
 * The city must have enough people to tend the land.
@@ -114,9 +109,6 @@ public static void buyLand(int landPrice, int acresToBuy, CropData cropData) thr
 //  deduct cost from the wheat in store
     wheat -= acresToBuy * landPrice;
     cropData.setwheatInStore(wheat);
-      
-//  return acresOwned
- //   return owned;
 }
 
 
@@ -183,26 +175,26 @@ public static int checkOffering(int tithe, CropData cropData) {
 *Purpose:  To determine how many acres of land to plant.
 *@param acresToPlant the number of acres to plant.
 *@param cropData reference to a CropData object
-*@return the amount of acres of land to plant
+*@throws exception based on the precondition that isn't met.
 * Pre-conditions:  the number of acres to be planted must be positive.  Check that the city has owns enough land to plant on.
 * Verify that the city has enough wheat in storage to plant this many acres.
 */
-public static int plantCrops(int acresToPlant, CropData cropData)
+public static void plantCrops(int acresToPlant, CropData cropData) throws CropException
 {
-//  If acresToPlant < 0, return -1
+//  If acresToPlant < 0, throw exception message
     if(acresToPlant < 0){
-        return -1;
+        throw new CropException("A negative value was input");
     }
-//  If acresToPlant > acresOwned, return -1
+//  If acresToPlant > acresOwned, throw exception message
     int owned = cropData.getacresOwned();
     if(acresToPlant > owned){
-        return -1;
+        throw new CropException("You don't own enough land");
     }
     
-//  If wheatInStore < acresToPlant / 2 return -1
+//  If wheatInStore < acresToPlant / 2, throw exception message
     int wheat = cropData.getwheatInStore();
     if(wheat < acresToPlant/2) {
-        return -1;
+        throw new CropException("You don't have enough wheat in storage to pay for planting this many acres");
     }
 //  costToPlant = acresToPlant /2
     double costToPlant;
@@ -217,7 +209,7 @@ public static int plantCrops(int acresToPlant, CropData cropData)
     cropData.setacresPlanted(acresToPlant);
     
 //  return acresPlanted
-    return cropData.getacresPlanted();
+    //return cropData.getacresPlanted();
 }
 
 // harvestCrops() method
