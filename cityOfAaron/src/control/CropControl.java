@@ -118,7 +118,8 @@ public static void buyLand(int landPrice, int acresToBuy, CropData cropData) thr
 *Purpose: Is it possible to feed the people with the wheat you have
 *@param wheatForPeople the amount of what the people need
 *@param cropData reference to a CropData object
-*@return the amount of wheat
+*@throws CropException based on the precondition that isn't met.
+*@return wheatForPeople
 * Pre-conditions:  the number of wheat has to be positive.  Check that there's
 * enough wheat to feed the people.
 */
