@@ -9,7 +9,6 @@ package control;
 
 import model.CropData;
 import exceptions.CropException;
-import exceptions.FeedPeopleException;
 import java.util.Random;
 
 
@@ -123,17 +122,17 @@ public static void buyLand(int landPrice, int acresToBuy, CropData cropData) thr
 * Pre-conditions:  the number of wheat has to be positive.  Check that there's
 * enough wheat to feed the people.
 */
-public static int feedPeople(int wheatForPeople, CropData cropData) throws FeedPeopleException {
+public static int feedPeople(int wheatForPeople, CropData cropData) throws CropException {
 
 // if wheatForPeople is less than 0, throw an exception
     if(wheatForPeople < 0) {
-        throw new FeedPeopleException("Wheat for People can't be a negative value");
+        throw new CropException("Wheat for People can't be a negative value");
     }
 
     int wheatInStore = cropData.getwheatInStore();
 //  If wheatInStore is less than wheatForPeople throw an exception      
     if (wheatInStore < wheatForPeople ){
-        throw new FeedPeopleException("There's not enough what in storage to meet the needs of the people.");
+        throw new CropException("There's not enough what in storage to meet the needs of the people.");
 }
     
 //  subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
