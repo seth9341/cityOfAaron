@@ -133,7 +133,7 @@ public static int feedPeople(int wheatForPeople, CropData cropData) throws FeedP
     int wheatInStore = cropData.getwheatInStore();
 //  If wheatInStore is less than wheatForPeople throw an exception      
     if (wheatInStore < wheatForPeople ){
-        throw new FeedPeopleException("There's not enough what in storage to meet the needs of the people.");
+        throw new FeedPeopleException("There's not enough wheat in storage to meet the needs of the people.");
 }
     
 //  subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
