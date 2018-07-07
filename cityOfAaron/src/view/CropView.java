@@ -95,13 +95,25 @@ public class CropView {
         //Prompt the user to enter the number of acres to sell.
         System.out.println();
         System.out.println("The current population in the City of Aaron is " + people);
-        System.out.print("\nHow many bushels of wheat would you like to allocate for feeding the people? ");
         
-        //Get the user's input and saves it the toSell variable.
-        int toSell = keyboard.nextInt();
+        int toSell;
+        boolean paramsNotOkay;
+        do
+        {
+           paramsNotOkay = false;
+           System.out.print("How many bushels of wheat do you want? ");
+           toSell = keyboard.nextInt();
+           try {
+               // Call the feedPeople( ) method in the control layer to buy the land
+                CropControl.feedPeople(toSell,cropData);
+           }
+           catch(CropException e){
+                System.out.println("Sorry, try again."); 
+                System.out.println(e.getMessage()); 
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);     
         
-        //Call the feedPeople() method in the control layer to feed the people. Passes the toSell, and cropData parameters
-        CropControl.feedPeople(toSell, cropData);
     }
     
     //The sellLandView method
