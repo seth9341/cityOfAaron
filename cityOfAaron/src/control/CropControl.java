@@ -155,19 +155,17 @@ public static int feedPeople(int wheatForPeople, CropData cropData) throws CropE
 *@ Save value entered by user
 * Pre-conditions:  the tithe number must be positive.  The number needs to be not greater than 100
 */
-public static int checkOffering(int tithe, CropData cropData) {
+public static void checkOffering(int tithe, CropData cropData) throws CropException {
     
     //check to see if offering is neg or above 100
     //if so print out to get new number
     if (tithe < 0 || tithe > 100){
-        System.out.println("Please enter a number between 0-100");
-        return -1;
+        throw new CropException("Please enter a number between 0-100");
     }
     //if offering is between 0-100 then save/setoffering
     else {
         cropData.setoffering(tithe);
     }
-    return tithe;
     
 }
 

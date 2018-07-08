@@ -40,6 +40,9 @@ public class CropView {
         
         //call the plantCropsView() method
         plantCropsView();
+        
+        //call the setOfferingView() method
+        setOfferingView();
     }
             
     
@@ -103,6 +106,7 @@ public class CropView {
            paramsNotOkay = false;
            System.out.print("How many bushels of wheat do you want? ");
            toSell = keyboard.nextInt();
+           
            try {
                // Call the feedPeople( ) method in the control layer to buy the land
                 CropControl.feedPeople(toSell,cropData);
@@ -192,6 +196,37 @@ public class CropView {
            System.out.println("\n" + starved + " people have starved due to your incompetance!");
                  
     } 
+     
+     //The setOffering method
+    //Author: Stanely Varner
+    //Purpose: interface with the user input for setting offering
+    //Parameters: none
+    //Returns: none
+    public static void setOfferingView()
+    {
+        boolean paramsNotOkay;
+        do
+        {
+            paramsNotOkay = false;
+            //Prompt the user to enter the percentage to pay in tithes and offerings.
+            System.out.print("What percentage of your harvest do you want to pay in tithes and offerings? ");
+        
+            //Get the user's input and save it.
+            int tithe = keyboard.nextInt();
+            
+            try
+            {        
+                //Call the checkOffering() method in the control layer to set the offering amount.
+                CropControl.checkOffering(tithe, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I'm sorry, invalid input. ");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        }while (paramsNotOkay);
+    }
 
 
 }
