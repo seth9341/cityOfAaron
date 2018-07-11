@@ -6,6 +6,9 @@
 package view;
 
 import control.GameControl;
+import java.util.Scanner;
+import model.Game;
+import cityofaaron.CityOfAaron;
 
 
 public class MainMenuView extends MenuView 
@@ -92,10 +95,30 @@ public MainMenuView()
     //Call the displayMenuView method of the newly created mmv instance
     gmv.displayMenuView();
 }
-
+//The startSavedGame method
+//Purpose: loads a saved game object from disk and start the game
+//Parameters: none
+//Returns: none
 public void startSavedGame() 
 {
-    System.out.println("Called startSavedGame method.");
+    Scanner input = new Scanner(System.in);
+    
+    //get rid of nl character left in the stream
+    input.nextLine();
+    //prompt user and get a file path
+    String fileName;
+    System.out.println("\nWhat is the name of your saved game?");
+    fileName = keyboard.next();
+    
+    //call the getSavedGame() method in the GameControl class to load the game
+    GameControl.getSavedGame(fileName);
+    
+    // Display the Game menu
+    //Create a GameMenuView instance called gmv
+    GameMenuView gmv = new GameMenuView();
+        
+    //Call the displayMenuView method of the newly created mmv instance
+    gmv.displayMenuView();
 }
 
 public void displayHelpMenuView()
@@ -109,7 +132,15 @@ public void displayHelpMenuView()
 
 public void displaySaveGameView()
 {
-    System.out.println("Called displaySaveGameView method.");
+    
+    //prompt the user to name and save the file
+    Game theGame = CityOfAaron.getTheGame(); //get the current game
+    String fileName;
+    System.out.println("\nWhat would you like to name this game?");
+    fileName = keyboard.next();
+    
+    //call the SaveGame() method in the GameControl class to save the game
+    GameControl.setSavedGame(fileName, theGame);
 }
     
 }
