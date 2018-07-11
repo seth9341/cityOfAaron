@@ -6,6 +6,7 @@
 package control;
 
 import java.util.ArrayList;
+import java.io.*;
 import cityofaaron.CityOfAaron;
 import model.*;
 
@@ -35,6 +36,43 @@ public class GameControl {
         createProvisionList();
         createMap();
         createDevTeam();
+    }
+    
+    //the getSavedGame method
+    //Purpose: load a saved game from disk
+    //Parameters: the file path
+    //Returns: none
+    //Side Effect: the game reference in the driver is updated
+    public static void getSavedGame(String filePath)
+    {
+        Game theGame = null;
+        try(FileInputStream fips = new FileInputStream(filePath))
+        {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            theGame = (Game) input.readObject();
+            CityOfAaron.setTheGame(theGame);
+        }
+        catch(Exception e)
+        {
+            System.out.println("\nThere was an error reading the saved game file");
+        }
+    }
+    
+    //the setSaveGame method
+    //Purpose: save a game to disk
+    //Parameters: the file name/path
+    //Returns: none
+    public static void setSavedGame(String filePath, Game theGame)
+    {
+        try(FileOutputStream fops = new FileOutputStream(filePath))
+        {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(theGame);
+        }
+        catch(Exception e)
+        {
+            System.out.println("\nThere was an error writing the saved game file");
+        }
     }
   
     //create the CropData object method
