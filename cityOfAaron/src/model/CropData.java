@@ -129,4 +129,24 @@ public class CropData implements Serializable {
                     this.wheatForPeople = wheatForPeople;
             }
 
+    @Override
+    public String toString() {
+        return  "You have been ruling for: " + year + " years\n" +
+                "The number of citizens who starved to death this year: "  + numStarved + "\n" +
+                "The number of new people that moved into the city this year: " + newPeople + "\n" +
+                "The current population: " + population + "\n" +
+                "The number of acres of crop land owned by the city: " + acresOwned + "\n" +
+                "The number of bushels per acre in this years harvest: " + cropYield + "\n" +
+                "The total number of bushels of what harvested: " + harvest + "\n" +
+                "The number of bushels paid in tithes and offerings: " + offeringBushels + "\n" +
+                "The number of bushels of wheat eaten by rats: " + eatenByRats + "\n" +
+                "The number of bushels of wheat in store: " + wheatInStore + "\n";
+                }
+                
+                
+                
+              
+            
+            
+
 }
