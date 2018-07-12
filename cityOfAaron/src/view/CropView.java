@@ -29,6 +29,7 @@ public class CropView {
     //Returns: none
     public static void runCropsView()
     {
+        cropsReportView();
         //call the buyLandView() method
         buyLandView();
         
@@ -45,6 +46,15 @@ public class CropView {
         setOfferingView();
     }
             
+    
+    //The cropReportView
+    //Purpose:  view a report that displays the status for various crop and city data.
+    //Parameters: none
+    //Returns: none
+    public static void cropsReportView()
+    {
+        System.out.println(cropData.toString());
+    }
     
     //The buyLandView method
     //Purpose: interface with the user input for buying land
