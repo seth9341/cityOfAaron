@@ -8,6 +8,7 @@ package view;
 import model.*;
 import cityofaaron.*;
 import java.util.ArrayList;
+import java.io.PrintWriter;
 
 public class ListMenuView extends MenuView {
     
@@ -46,7 +47,7 @@ public ListMenuView()
                 viewDevTeam();
                 break;
             case 2: // View a list of animals
-                viewListOfAnimals();
+                chooseAnimal();
                 break;
             case 3: // View a list of tools
                 viewListOfTools();
@@ -74,6 +75,41 @@ public void viewDevTeam()
     }
 }
 
+public void chooseAnimal()
+{
+    int max = 3;
+    int menuOption = 0;
+    int userInput = 0;
+    ArrayList<ListItem> animals = theGame.getAnimals();
+        
+    System.out.println("\n" +
+                        "   What would you like to do?  \n\n" +
+                        " 1 - View a list of animals\n" +
+                        " 2 - Save a list of animlas to disk\n" +
+                        " 3 - Return to Lists");
+    do
+    {
+        userInput = keyboard.nextInt();
+        
+        if(userInput < 1 || userInput > max)
+        {
+            System.out.println("\noption must be between 1 and " + max);
+        }
+    } while(userInput < 1 || userInput > max);
+    
+    if(userInput == 1)
+    {
+        viewListOfAnimals();
+    }
+    else{
+    
+        saveListOfAnimals(animals);
+    }
+    
+    
+    
+}
+
 //The viewListOfAnimals() method
 //Purpose: to get the list of animals from the
 //current game and print them out to the screen.
@@ -82,10 +118,36 @@ public void viewDevTeam()
 public void viewListOfAnimals()
 {
     ArrayList<ListItem> animals = theGame.getAnimals();
+        
+        //System.out.println("There are " + n.getNumber() + " " + n.getName());
+        System.out.println("\n\n        Inventory Report        ");
+        System.out.printf("%n%-20s%10s", "Live Stock", "Quantity");
+        System.out.printf("%n%-20s%10s", "-------------", "-----------");
         for(ListItem n: animals){
-        System.out.println("There are " + n.getNumber() + " " + n.getName());
+        System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
     }
     
+}
+public void saveListOfAnimals(ArrayList<ListItem> animals)
+{
+    String animalOutput;
+    keyboard.nextLine();
+    System.out.println("Please enter a file name");
+    
+    animalOutput = keyboard.nextLine();
+    try (PrintWriter out = new PrintWriter(animalOutput))
+    {
+        System.out.println("\n\n        Inventory Report        ");
+        System.out.printf("%n%-20s%10s", "Live Stock", "Quantity");
+        System.out.printf("%n%-20s%10s", "-------------", "-----------");
+        for(ListItem n: animals)
+            {
+                System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
+            }
+    }catch(Exception e)
+    {
+        System.out.println("\nThere was an error writing the list to disk ");
+    }    
 }
 
 //The viewListOfTools() method
