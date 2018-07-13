@@ -101,10 +101,8 @@ public MainMenuView()
 //Returns: none
 public void startSavedGame() 
 {
-    Scanner input = new Scanner(System.in);
-    
     //get rid of nl character left in the stream
-    input.nextLine();
+    keyboard.nextLine();
     //prompt user and get a file path
     String fileName;
     System.out.println("\nWhat is the name of your saved game?");
