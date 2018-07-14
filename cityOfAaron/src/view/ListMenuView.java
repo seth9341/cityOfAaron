@@ -63,6 +63,49 @@ public ListMenuView()
     }
     
 
+//The viewSaveDevTeam() method
+//Purpose:  To prompt the player to choose to view or save the list of developers,
+//because I know I always want to know who made the games I'm playing
+//Paramaters: none
+//Returns:  none
+public void viewSaveDevTeam()
+{
+    int max = 3;
+    int menuOption = 0;
+    int userInput = 0;
+    
+    System.out.println("\n" +
+                        "   What would you like to do?  \n\n" +
+                        " 1 - See who developed the game\n" +
+                        " 2 - Save a list of the developers to a file\n" +
+                        " 3 - Return to Lists\n");
+    do
+    {
+        userInput = keyboard.nextInt();
+        
+        if(userInput < 1 || userInput > max)
+        {
+            System.out.println("\noption must be between 1 and " + max);
+        }
+    } while(userInput < 1 || userInput > max);
+    
+    if(userInput == 1)
+    {
+        viewDevTeam();
+    }
+    
+    else if(userInput ==2)
+    {
+        saveListOfDevelopers();
+    }
+    else
+    {
+        displayMenuView();
+    }
+       
+}
+
+
 //The viewDevTeam() method
 //Purpose: Creates a ViewList object and calls its
 //displayMenuView() method
@@ -75,6 +118,49 @@ public void viewDevTeam()
         System.out.println("The members of the development team are " + n.getName());
     }
 }
+
+//The saveListOfDevelopers() method
+//Purpose: to get the list of developers from the current game
+//and save them to disk.  The player will be prompted for the filename
+//Parameters:  none
+//Returns: none
+public void saveListOfDevelopers()
+{
+    ArrayList<ListItem> developers = theGame.getDevelopers();
+    keyboard.nextLine();
+    PrintWriter outFile = null;
+    System.out.println("Please enter a file name\n\n");
+    String fileName = keyboard.nextLine();  //will hold the file name from the player
+    try 
+    {
+        outFile = new PrintWriter(fileName);  //create the PrintWriter object
+        outFile.println("\n\n        Development Team        ");
+        outFile.printf("Seth Huntley");
+        outFile.printf("Bruce Montgomery");
+        outFile.printf("Stanley Varner");
+        outFile.flush();
+        
+    }catch(Exception e)
+    {
+        System.out.println("\nThere was an error writing the list to disk ");
+    }
+    finally 
+    {
+        if (outFile != null)
+            try
+            {
+              outFile.close(); //close the file
+            }catch (Exception e)
+                {
+                    System.out.println("Error closing file");
+                }
+    }
+    System.out.println("\nYour file has been saved as " + fileName + "\n");
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
+ 
+}
+
 
 //The viewSaveListAnimals() method
 //Purpose:  To prompt the player to choose to view or save the animal list
