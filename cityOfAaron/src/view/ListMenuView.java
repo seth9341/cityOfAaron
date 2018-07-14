@@ -9,11 +9,12 @@ import model.*;
 import cityofaaron.*;
 import java.util.ArrayList;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class ListMenuView extends MenuView {
     
-    //getTheGame and assign to theGame. Will be used by the viewlist methods
-    Game theGame = CityOfAaron.getTheGame();
+//getTheGame and assign to theGame. Will be used by the viewlist methods
+Game theGame = CityOfAaron.getTheGame();
            
 // The ListView constructor
 // Purpose: Initialize the game menu data
@@ -27,7 +28,7 @@ public ListMenuView()
                    "* CITY OF AARON: LIST MENU       *\n" +
                    "**********************************\n" +
                    " 1 - View the development team\n" +
-                   " 2 - View a list of animals\n" +
+                   " 2 - View or save a list of animals\n" +
                    " 3 - View a list of tools\n" +
                    " 4 - View a list of provisions\n" +
                    " 5 - Return to the game menu\n",
@@ -45,16 +46,16 @@ public ListMenuView()
         {
             case 1: // View the development team
                 viewDevTeam();
-                break;
+                displayMenuView();
             case 2: // View a list of animals
-                chooseAnimal();
-                break;
+                viewSaveListAnimals();
+                displayMenuView();
             case 3: // View a list of tools
                 viewListOfTools();
-                break;
+                displayMenuView();
             case 4: // View a list of provisions
                 viewListOfProvisions();
-                break;
+                displayMenuView();
             case 5: // Return to the Game Menu
                 gameMenuView();
         }
@@ -75,18 +76,22 @@ public void viewDevTeam()
     }
 }
 
-public void chooseAnimal()
+//The viewSaveListAnimals() method
+//Purpose:  To prompt the player to choose to view or save the animal list
+//or return to the lists menu
+//Paramaters: none
+//Returns:  none
+public void viewSaveListAnimals()
 {
     int max = 3;
     int menuOption = 0;
     int userInput = 0;
-    ArrayList<ListItem> animals = theGame.getAnimals();
-        
+    
     System.out.println("\n" +
                         "   What would you like to do?  \n\n" +
                         " 1 - View a list of animals\n" +
                         " 2 - Save a list of animlas to disk\n" +
-                        " 3 - Return to Lists");
+                        " 3 - Return to Lists\n");
     do
     {
         userInput = keyboard.nextInt();
@@ -101,13 +106,16 @@ public void chooseAnimal()
     {
         viewListOfAnimals();
     }
-    else{
     
-        saveListOfAnimals(animals);
+    else if(userInput ==2)
+    {
+        saveListOfAnimals();
     }
-    
-    
-    
+    else
+    {
+        displayMenuView();
+    }
+       
 }
 
 //The viewListOfAnimals() method
@@ -119,35 +127,61 @@ public void viewListOfAnimals()
 {
     ArrayList<ListItem> animals = theGame.getAnimals();
         
-        //System.out.println("There are " + n.getNumber() + " " + n.getName());
         System.out.println("\n\n        Inventory Report        ");
         System.out.printf("%n%-20s%10s", "Live Stock", "Quantity");
         System.out.printf("%n%-20s%10s", "-------------", "-----------");
         for(ListItem n: animals){
         System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
+        
     }
+        System.out.println("\n\nPress ENTER to continue...");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
     
 }
-public void saveListOfAnimals(ArrayList<ListItem> animals)
+
+//The saveListOfAnimals() method
+//Purpose: to get the list of animals from the current game
+//and save them to disk.  The player will be prompted for the filename
+//Parameters:  the animals array
+//Returns: none
+//public void saveListOfAnimals(ArrayList<ListItem> animals)
+public void saveListOfAnimals()
 {
-    String animalOutput;
+    ArrayList<ListItem> animals = theGame.getAnimals();
     keyboard.nextLine();
-    System.out.println("Please enter a file name");
-    
-    animalOutput = keyboard.nextLine();
-    try (PrintWriter out = new PrintWriter(animalOutput))
+    PrintWriter outFile = null;
+    System.out.println("Please enter a file name\n\n");
+    String fileName = keyboard.nextLine();  //will hold the file name from the player
+    try 
     {
-        System.out.println("\n\n        Inventory Report        ");
-        System.out.printf("%n%-20s%10s", "Live Stock", "Quantity");
-        System.out.printf("%n%-20s%10s", "-------------", "-----------");
-        for(ListItem n: animals)
+        outFile = new PrintWriter(fileName);  //create the PrintWriter object
+        outFile.println("\n\n        Inventory Report        ");
+        outFile.printf("%n%-20s%10s", "Live Stock", "Quantity");
+        outFile.printf("%n%-20s%10s", "-------------", "-----------");
+        for(ListItem n: animals) //loop through the animals array to get the data and output it
             {
-                System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
+                outFile.printf("%n%-20s%5d", n.getName(), n.getNumber());
             }
+        outFile.flush();
+        
     }catch(Exception e)
     {
         System.out.println("\nThere was an error writing the list to disk ");
-    }    
+    }
+    finally 
+    {
+        if (outFile != null)
+            try
+            {
+              outFile.close(); //close the file
+            }catch (Exception e)
+                {
+                    System.out.println("Error closing file");
+                }
+    }
+    System.out.println("\nYour file has been saved as " + fileName + "\n");
+ 
 }
 
 //The viewListOfTools() method
@@ -178,7 +212,11 @@ public void viewListOfProvisions()
 
 public void gameMenuView()
 {
-    System.out.println("Return to Game menu method");
+    //Create a GameMenuView instance called gmv
+    GameMenuView gmv = new GameMenuView();
+        
+    //Call the displayMenuView method of the newly created mmv instance
+    gmv.displayMenuView();
 }        
 
 }
