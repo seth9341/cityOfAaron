@@ -134,7 +134,7 @@ public void saveListOfDevelopers()
     try 
     {
         outFile = new PrintWriter(fileName);  //create the PrintWriter object
-        outFile.println("\n\n        Development Team        ");
+        outFile.println("\n\nDevelopment Team");
         outFile.printf("Seth Huntley");
         outFile.printf("Bruce Montgomery");
         outFile.printf("Stanley Varner");
