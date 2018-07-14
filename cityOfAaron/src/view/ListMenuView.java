@@ -45,7 +45,7 @@ public ListMenuView()
         switch(option)
         {
             case 1: // View the development team
-                viewDevTeam();
+                viewSaveDevTeam();
                 displayMenuView();
             case 2: // View a list of animals
                 viewSaveListAnimals();
