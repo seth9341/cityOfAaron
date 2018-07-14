@@ -30,7 +30,7 @@ public ListMenuView()
                    " 1 - View the development team\n" +
                    " 2 - View or save a list of animals\n" +
                    " 3 - View a list of tools\n" +
-                   " 4 - View a list of provisions\n" +
+                   " 4 - View or save a list of provisions\n" +
                    " 5 - Return to the game menu\n",
         
             5);
@@ -54,7 +54,7 @@ public ListMenuView()
                 viewListOfTools();
                 displayMenuView();
             case 4: // View a list of provisions
-                viewListOfProvisions();
+                viewSaveListProvisions();
                 displayMenuView();
             case 5: // Return to the Game Menu
                 gameMenuView();
@@ -128,13 +128,13 @@ public void viewListOfAnimals()
     ArrayList<ListItem> animals = theGame.getAnimals();
         
         System.out.println("\n\n        Inventory Report        ");
-        System.out.printf("%n%-20s%10s", "Live Stock", "Quantity");
+        System.out.printf("%n%-20s%10s", " Animals", "Quantity");
         System.out.printf("%n%-20s%10s", "-------------", "-----------");
         for(ListItem n: animals){
         System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
         
     }
-        System.out.println("\n\nPress ENTER to continue...");
+        System.out.println("\n\nPress ENTER to continue..."); //added this to stop the output from scrolling before you could read it
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     
@@ -143,9 +143,8 @@ public void viewListOfAnimals()
 //The saveListOfAnimals() method
 //Purpose: to get the list of animals from the current game
 //and save them to disk.  The player will be prompted for the filename
-//Parameters:  the animals array
+//Parameters:  none
 //Returns: none
-//public void saveListOfAnimals(ArrayList<ListItem> animals)
 public void saveListOfAnimals()
 {
     ArrayList<ListItem> animals = theGame.getAnimals();
@@ -181,6 +180,8 @@ public void saveListOfAnimals()
                 }
     }
     System.out.println("\nYour file has been saved as " + fileName + "\n");
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
  
 }
 
@@ -197,18 +198,113 @@ public void viewListOfTools()
     }
 }
 
+//The viewSaveListProvisions() method
+//Purpose:  To prompt the player to choose to view or save the provisions list
+//or return to the lists menu
+//Paramaters: none
+//Returns:  none
+public void viewSaveListProvisions()
+{
+    int max = 3;
+    int menuOption = 0;
+    int userInput = 0;
+    
+    System.out.println("\n" +
+                        "   What would you like to do?  \n\n" +
+                        " 1 - View a list of provisions\n" +
+                        " 2 - Save a list of animlas to disk\n" +
+                        " 3 - Return to Lists\n");
+    do
+    {
+        userInput = keyboard.nextInt();
+        
+        if(userInput < 1 || userInput > max)
+        {
+            System.out.println("\noption must be between 1 and " + max);
+        }
+    } while(userInput < 1 || userInput > max);
+    
+    if(userInput == 1)
+    {
+        viewListOfProvisions();
+    }
+    
+    else if(userInput ==2)
+    {
+        saveListOfProvisions();
+    }
+    else
+    {
+        displayMenuView();
+    }
+       
+}
+
 //The viewListOfProvisions() method
-//Purpose: Creates a ViewList object and calls its
-//displayMenuView() method
+//Purpose: to get the list of provisions from the
+//current game and print them out to the screen.
 //Parameters: none
 //Returns: none
 public void viewListOfProvisions()
 {
     ArrayList<ListItem> provisions = theGame.getProvisions();
-    for(ListItem n: provisions){
-        System.out.println("There are " + n.getNumber() + " " + n.getName());
+    
+        System.out.println("\n\n        Inventory Report        ");
+        System.out.printf("%n%-20s%10s", " Provisions", "Quantity");
+        System.out.printf("%n%-20s%10s", "-------------", "-----------");
+        for(ListItem n: provisions){
+        System.out.printf("%n%-20s%5d", n.getName(), n.getNumber());
     }
+        System.out.println("\n\nPress ENTER to continue..."); //added this to stop the output from scrolling before you could read it
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
 }
+
+//The saveListOfProvisions() method
+//Purpose: to get the list of provisions from the current game
+//and save them to disk.  The player will be prompted for the filename
+//Parameters:  none
+//Returns: none
+public void saveListOfProvisions()
+{
+    ArrayList<ListItem> provisions = theGame.getProvisions();
+    keyboard.nextLine();
+    PrintWriter outFile = null;
+    System.out.println("Please enter a file name\n\n");
+    String fileName = keyboard.nextLine();  //will hold the file name from the player
+    try 
+    {
+        outFile = new PrintWriter(fileName);  //create the PrintWriter object
+        outFile.println("\n\n        Inventory Report        ");
+        outFile.printf("%n%-20s%10s", "Provisions", "Quantity");
+        outFile.printf("%n%-20s%10s", "-------------", "-----------");
+        for(ListItem n: provisions) //loop through the provisions array to get the data and output it
+            {
+                outFile.printf("%n%-20s%5d", n.getName(), n.getNumber());
+            }
+        outFile.flush();
+        
+    }catch(Exception e)
+    {
+        System.out.println("\nThere was an error writing the list to disk ");
+    }
+    finally 
+    {
+        if (outFile != null)
+            try
+            {
+              outFile.close(); //close the file
+            }catch (Exception e)
+                {
+                    System.out.println("Error closing file");
+                }
+    }
+    System.out.println("\nYour file has been saved as " + fileName + "\n");
+    System.out.println("\n\nPress ENTER to continue..."); //added this to stop the output from scrolling before you could read it
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
+}
+
 
 public void gameMenuView()
 {
