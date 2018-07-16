@@ -6,6 +6,7 @@
 package view;
 
 import java.util.Scanner;
+import view.MainMenuView;
 
 public class GameMenuView extends MenuView {
     
@@ -83,8 +84,12 @@ public void manageCrops()
 }
 
 public void mainMenuView()
-{
-    System.out.println("Return to main menu method");
+{   
+    //Create a GameMenuView instance called gmv
+    MainMenuView mmv = new MainMenuView();
+        
+    //Call the displayMenuView method of the newly created mmv instance
+    mmv.displayMenuView();
 }        
 
 }
