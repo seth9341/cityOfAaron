@@ -98,7 +98,7 @@ public GameMenuView()
     System.out.println("  -------------------------------\n"
         + "  -------------------------------\n");
 }
-    
+
 
 //The viewList() method
 //Purpose: Creates a ViewList object and calls its
