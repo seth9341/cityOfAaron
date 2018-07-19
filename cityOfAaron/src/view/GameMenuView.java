@@ -6,6 +6,8 @@
 package view;
 
 import java.util.Scanner;
+import model.Map;
+import model.Location;
 
 public class GameMenuView extends MenuView {
     
@@ -56,10 +58,47 @@ public GameMenuView()
                 
     }
     
-public void viewMap() 
-{
-    System.out.println("Called viewMap method.");
+
+    //The viewMap method
+    //Purpose: to show the player a map of the game
+    //Parameters: None
+    //Returns: None
+    //Seth Huntley
+    //Individual Assignment for week 13
+    public void viewMap() {
+        Location[][] locations = null;
+        System.out.println("\nThe City of Aaron\n"
+        + "Come and see what we have to offer!\n"
+        + "Courtesy of the City of Aaron Tourism Council.\n");
+
+        System.out.println("     1     2     3     4     5");
+        // row dividers and numbering
+        for (int i = 0; i < max; i++) {
+            System.out.println("  -------------------------------");
+            System.out.print((i + 1) + " ");
+            // columns, dividers
+            for (int j = 0; j < max; j++) {
+                System.out.print("|");
+                // Get the symbols and locations(row, column) for the map
+                Location location = locations[i][j];
+                System.out.print(" " + location.getSymbol() + "i");
+            }
+         
+            System.out.println("|");
+        }
+        System.out.println("  -------------------------------\n"
+        + "  -------------------------------\n");
+
+    System.out.println("Key:\n" + "~~~ = river\n" + "!!! = farmland\n"
+    + "--- = desert\n" + "$$$ = court\n" + "||| = granary\n" + "^^^ = village\n"
+    + ":(:( = border\n" + "MMM = undeveloped\n" + "*** = rameumpton\n"
+    + "### = amphitheater\n" + "&&& = Soldiers Quarters\n" + "@@@ = bakery\n"
+    + "%%% = Village Garden\n" + "!**! = Temple\n" + "##!! = The Palace\n");
+    
+    System.out.println("  -------------------------------\n"
+        + "  -------------------------------\n");
 }
+    
 
 //The viewList() method
 //Purpose: Creates a ViewList object and calls its
