@@ -18,6 +18,10 @@ public class CropControl
     private static final int LAND_BASE = 17;
     private static final int LAND_RANGE = 10;
     
+    //constants to calculate random number between 1 and 100 for Amount of wheat eaten by rats
+    private static final int RAT_BASE = 1;
+    private static final int RAT_RANGE = 100;
+    
     //constants to calculate crop yield
     private static final int HARV_8TO12_BASE = 2;
     private static final int HARV_8TO12_RANGE = 3;
@@ -25,6 +29,15 @@ public class CropControl
     private static final int HARV_0TO7_RANGE = 3;
     private static final int HARV_ABOVE12_BASE = 2;
     private static final int HARV_ABOVE12_RANGE = 4;
+    
+    //constants to calculate bushels of wheat eaten by rats
+    private static final int EBRS_8TO12_BASE = 3;
+    private static final int EBRS_8TO12_RANGE = 4;
+    private static final int EBRS_0TO7_BASE = 6;
+    private static final int EBRS_0TO7_RANGE = 4;
+    private static final int EBRS_ABOVE_BASE = 3;
+    private static final int EBRS_ABOVE_RANGE = 2;
+    
     
     //random number generator
     private static Random random = new Random();
@@ -37,6 +50,17 @@ public static int calcLandCost()
 {
     int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
     return landPrice;
+}
+
+//calcRandomRatNumber() method
+//Purpose: Calculate a random number between 1 and 100 to provide number to
+//determine the amount of wheat eaten by rats
+//Parameters: none
+//Returns: random number
+public static int calcRandomRatNumber()
+{
+    int ratNumber = random.nextInt(RAT_RANGE) + RAT_BASE;
+    return ratNumber;
 }
 
 
@@ -225,8 +249,7 @@ public static int harvestCrops(CropData cropData)
     int offering = cropData.getoffering();
     int lvHarvest;
     System.out.println("The offering is " + offering);
-    
-  
+      
     if(offering < 8) {
         int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
         System.out.println("the yield is " + yield);
@@ -235,8 +258,7 @@ public static int harvestCrops(CropData cropData)
         cropData.setharvest(lvHarvest);
         System.out.println("You harvested " + lvHarvest + " bushels of wheat.");
         return lvHarvest;}
-    
-    
+        
     if (offering >= 8 && offering <= 12) {
         int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
         System.out.println("the yield is " + yield);
@@ -255,7 +277,71 @@ public static int harvestCrops(CropData cropData)
         System.out.println("You harvested " + lvHarvest + " bushels of wheat.");
         return lvHarvest;}
     
-  
+  }
 
+public static void payOffering(CropData cropData)
+{
+    int offering = cropData.getoffering(); //get the offering and change it to a percentage
+    int lvHarvest = cropData.getharvest(); //get the amount of wheat harvested.
+    int payOffering = offering * lvHarvest / 100; //calculate how much wheat will need to be paid as an offering
+    lvHarvest = lvHarvest - payOffering; //this will new amount of wheat harvested after tithing is paid on it.
+    cropData.setharvestAfterOffering(lvHarvest);//set the harvest amount after paying tithing on it.
+    int wheatInStore = cropData.getwheatInStore() + lvHarvest;//get the current wheat in store and add the new harvested amount
+    cropData.setwheatInStore(wheatInStore);//set the new amount of wheat in store
+    
+    
+    
+    System.out.println("You agreed to pay " + cropData.getoffering() + " percent of your yield in tithing. Which means you owe " + payOffering + " bushels in wheat for tithing.");
+    System.out.println("You now have " + wheatInStore + " bushels of wheat in store");
 }
+
+public static void calcWheatLostToRats(CropData cropData)
+{
+    int randomRatNumber = calcRandomRatNumber();
+    int tithingPaid = cropData.getoffering();
+    int wheatInStore = cropData.getwheatInStore();
+    System.out.println("The randdom rat number is " + randomRatNumber);
+    
+    
+    if(randomRatNumber < 30 && tithingPaid < 8)
+        {
+            int multiplier = random.nextInt(EBRS_0TO7_RANGE) + EBRS_0TO7_BASE;
+            System.out.println("the multiplier is " + multiplier);
+            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
+            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            cropData.seteatenByRats(eatenByRats);
+            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
+            wheatInStore = wheatInStore - eatenByRats;
+            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
+            cropData.setwheatInStore(wheatInStore);
+        }
+        
+    else if (randomRatNumber < 30 && (tithingPaid >= 8 && tithingPaid <=12))
+        {
+            int multiplier = random.nextInt(EBRS_8TO12_RANGE) + EBRS_8TO12_BASE;
+            System.out.println("the multiplier is " + multiplier);
+            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
+            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            cropData.seteatenByRats(eatenByRats);
+            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
+            wheatInStore = wheatInStore - eatenByRats;
+            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
+            cropData.setwheatInStore(wheatInStore);
+        }
+    
+    else if (randomRatNumber < 30 && (tithingPaid > 12))
+        {
+            int multiplier = random.nextInt(EBRS_ABOVE_RANGE) + EBRS_ABOVE_BASE;
+            System.out.println("the multiplier is " + multiplier);
+            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
+            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            cropData.seteatenByRats(eatenByRats);
+            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
+            wheatInStore = wheatInStore - eatenByRats;
+            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
+            cropData.setwheatInStore(wheatInStore);
+            
+        }
+}
+
 }
