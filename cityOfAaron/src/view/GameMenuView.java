@@ -56,7 +56,6 @@ public GameMenuView()
             case 5: // Return to the Main Menu
                 mainMenuView();
         }
-                
     }
     
 
