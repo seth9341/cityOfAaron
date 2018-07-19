@@ -85,7 +85,7 @@ public void manageCrops()
 
 public void mainMenuView()
 {   
-    //Create a GameMenuView instance called gmv
+    //Create a MainMenuView instance called mmv
     MainMenuView mmv = new MainMenuView();
         
     //Call the displayMenuView method of the newly created mmv instance
