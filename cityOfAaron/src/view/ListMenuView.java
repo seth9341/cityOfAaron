@@ -51,7 +51,7 @@ public ListMenuView()
                 viewSaveListAnimals();
                 displayMenuView();
             case 3: // View a list of tools
-                viewListOfTools();
+                viewSaveListTools();
                 displayMenuView();
             case 4: // View a list of provisions
                 viewSaveListProvisions();
@@ -271,6 +271,47 @@ public void saveListOfAnimals()
  
 }
 
+//The viewSaveListTools() method
+//Purpose:  To prompt the player to choose to view or save the Tool list
+//or return to the lists menu
+//Paramaters: none
+//Returns:  none
+public void viewSaveListTools()
+{
+    int max = 3;
+    int menuOption = 0;
+    int userInput = 0;
+    
+    System.out.println("\n" +
+                        "   What would you like to do?  \n\n" +
+                        " 1 - View a list of tools\n" +
+                        " 2 - Save a list of tools to disk\n" +
+                        " 3 - Return to Lists\n");
+    do
+    {
+        userInput = keyboard.nextInt();
+        
+        if(userInput < 1 || userInput > max)
+        {
+            System.out.println("\noption must be between 1 and " + max);
+        }
+    } while(userInput < 1 || userInput > max);
+    
+    if(userInput == 1)
+    {
+        viewListOfTools();
+    }
+    
+    else if(userInput ==2)
+    {
+        saveListOfTools();
+    }
+    else
+    {
+        displayMenuView();
+    }
+       
+}
 //The viewListOfTools() method
 //Purpose: Creates a ViewList object and calls its
 //displayMenuView() method
@@ -282,8 +323,51 @@ public void viewListOfTools()
     for(ListItem n: tools){
         System.out.println("There are " + n.getNumber() + " " + n.getName());
     }
+    
 }
 
+//The saveListOfTools() method
+//Purpose: to get the list of tools from the current game
+//and save them to disk.  The player will be prompted for the filename
+//Parameters:  none
+//Returns: none
+public void saveListOfTools()
+{
+    ArrayList<ListItem> tools = theGame.getTools();
+    keyboard.nextLine();
+    PrintWriter outFile = null;
+    System.out.println("Please enter a file name\n\n");
+    String fileName = keyboard.nextLine();  //will hold the file name from the player
+    try 
+    {
+        outFile = new PrintWriter(fileName);  //create the PrintWriter object
+        outFile.println("Tools List");
+        for(ListItem n: tools) //loop through the tools array to get the data and output it
+            {
+                outFile.printf("\nThere are " + n.getNumber() + " " + n.getName());
+            }
+        outFile.flush();
+        
+    }catch(Exception e)
+    {
+        System.out.println("\nThere was an error writing the list to disk ");
+    }
+    finally 
+    {
+        if (outFile != null)
+            try
+            {
+              outFile.close(); //close the file
+            }catch (Exception e)
+                {
+                    System.out.println("Error closing file");
+                }
+    }
+    System.out.println("\nYour file has been saved as " + fileName + "\n");
+    Scanner scanner = new Scanner(System.in);
+    scanner.nextLine();
+ 
+}
 //The viewSaveListProvisions() method
 //Purpose:  To prompt the player to choose to view or save the provisions list
 //or return to the lists menu

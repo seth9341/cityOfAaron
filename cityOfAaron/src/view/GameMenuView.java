@@ -6,6 +6,7 @@
 package view;
 
 import java.util.Scanner;
+import view.MainMenuView;
 import model.Map;
 import model.Location;
 
@@ -122,8 +123,12 @@ public void manageCrops()
 }
 
 public void mainMenuView()
-{
-    System.out.println("Return to main menu method");
+{   
+    //Create a MainMenuView instance called mmv
+    MainMenuView mmv = new MainMenuView();
+        
+    //Call the displayMenuView method of the newly created mmv instance
+    mmv.displayMenuView();
 }        
 
 }
