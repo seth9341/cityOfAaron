@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class CropControl
 {
-    //constants to calculate land cost
+    //constants to calculate a random number between 17 and 25 to be used to calculate land cost
     private static final int LAND_BASE = 17;
     private static final int LAND_RANGE = 10;
     
@@ -22,7 +22,11 @@ public class CropControl
     private static final int RAT_BASE = 1;
     private static final int RAT_RANGE = 100;
     
-    //constants to calculate crop yield
+    //constant to calculate a random number between 1 and 5 to be used to calculate the population growth
+    private static final int PGRTH_BASE = 1;
+    private static final int PGRTH_RANGE = 4;
+    
+    //constants to calculate a random number between 1 and 7 to be used to calculate the crop yield
     private static final int HARV_8TO12_BASE = 2;
     private static final int HARV_8TO12_RANGE = 3;
     private static final int HARV_0TO7_BASE = 1;
@@ -30,14 +34,13 @@ public class CropControl
     private static final int HARV_ABOVE12_BASE = 2;
     private static final int HARV_ABOVE12_RANGE = 4;
     
-    //constants to calculate bushels of wheat eaten by rats
+    //constants to calculate a random number between 3 and 10 to be used to calculate the bushels of wheat eaten by rats
     private static final int EBRS_8TO12_BASE = 3;
     private static final int EBRS_8TO12_RANGE = 4;
     private static final int EBRS_0TO7_BASE = 6;
     private static final int EBRS_0TO7_RANGE = 4;
     private static final int EBRS_ABOVE_BASE = 3;
     private static final int EBRS_ABOVE_RANGE = 2;
-    
     
     //random number generator
     private static Random random = new Random();
@@ -63,6 +66,13 @@ public static int calcRandomRatNumber()
     return ratNumber;
 }
 
+//calcGrowthNumber() method
+//Purpose: Calculates a random number between 1 and 5 to prived a number to determine the population growth
+public static int calcGrowthNumber()
+{
+    int populationGrowth = random.nextInt(PGRTH_RANGE) + PGRTH_BASE;
+    return populationGrowth;
+}
 
 
 
@@ -106,22 +116,21 @@ public static int calcRandomRatNumber()
 */
 public static void buyLand(int landPrice, int acresToBuy, CropData cropData) throws CropException
 {
+    
+    int wheat = cropData.getwheatInStore();//get the current amount of wheatInStore and assign it to the wheat variable.
+    int owned = cropData.getacresOwned();//get the current amount of acresOwned and assign it to the owned variable
+    int pop = cropData.getpopulation();//get the current population and assign it to the pop variable
+    
 //  If acresToBuy < 0, throw exception
     if(acresToBuy < 0) {
         throw new CropException("A negative value was input");
     }
-//  get the current amount of wheatInStore and assign it to the wheat variable.
-    int wheat = cropData.getwheatInStore();
     
 //  If acresToBuy * landPrice  > wheatInStore, throw exception      
     if(acresToBuy * landPrice > wheat) {
         throw new CropException("There is insufficient wheat to buy this much land.");
     }
 
-//  get the 
-    int owned = cropData.getacresOwned();
-    int pop = cropData.getpopulation();
-    
 //  If (acresToBuy + acresOwned)/10 > population, throw exception      
     if((acresToBuy + owned)/10 > pop) {
         throw new CropException("You don't have enough people to tend this much land");
@@ -157,7 +166,7 @@ public static int feedPeople(int wheatForPeople, CropData cropData) throws CropE
     int wheatInStore = cropData.getwheatInStore();
 //  If wheatInStore is less than wheatForPeople throw an exception      
     if (wheatInStore < wheatForPeople ){
-        throw new CropException("There's not enough what in storage to meet the needs of the people.");
+        throw new CropException("There's not enough what in storage.");
 }
     
 //  subtract the wheatForPeople from the wheatInStore and return the reaming wheatInStore
@@ -227,13 +236,10 @@ public static void plantCrops(int acresToPlant, CropData cropData) throws CropEx
 //  wheatInStore = wheatInStore – costToPlant
     wheat -= costToPlant;
     cropData.setwheatInStore(wheat);
-    System.out.println("There are " + wheat + " bushels of wheat in storage");
-    
+        
 //  acresPlanted = acresToPlant
     cropData.setacresPlanted(acresToPlant);
-    
-//  return acresPlanted
-    //return cropData.getacresPlanted();
+ 
 }
 
 // harvestCrops() method
@@ -248,11 +254,10 @@ public static int harvestCrops(CropData cropData)
 {
     int offering = cropData.getoffering();
     int lvHarvest;
-    System.out.println("The offering is " + offering);
-      
+         
     if(offering < 8) {
         int yield = random.nextInt(HARV_0TO7_RANGE) + HARV_0TO7_BASE;
-        System.out.println("the yield is " + yield);
+        cropData.setcropYield(yield);
         int acres = cropData.getacresPlanted();
         lvHarvest = yield * acres;
         cropData.setharvest(lvHarvest);
@@ -261,7 +266,7 @@ public static int harvestCrops(CropData cropData)
         
     if (offering >= 8 && offering <= 12) {
         int yield = random.nextInt(HARV_8TO12_RANGE) + HARV_8TO12_BASE;
-        System.out.println("the yield is " + yield);
+        cropData.setcropYield(yield);
         int acres = cropData.getacresPlanted();
         lvHarvest = yield * acres;
         cropData.setharvest(lvHarvest);
@@ -270,7 +275,7 @@ public static int harvestCrops(CropData cropData)
     
     else {
         int yield = random.nextInt(HARV_ABOVE12_RANGE) + HARV_ABOVE12_BASE;
-        System.out.println("the yield is " + yield);
+        cropData.setcropYield(yield);
         int acres = cropData.getacresPlanted();
         lvHarvest = yield * acres;
         cropData.setharvest(lvHarvest);
@@ -279,69 +284,109 @@ public static int harvestCrops(CropData cropData)
     
   }
 
+//payOffering() method
+//Purpose: To pay the amount of the offering that they player said they would pay. The offering is the percentage
+//that was promised as tithing by the player.  This percentage will be removed from the harvest.
+//Parameters: cropData reference to a CropData object
+//Returns: nothing
 public static void payOffering(CropData cropData)
 {
-    int offering = cropData.getoffering(); //get the offering and change it to a percentage
+    int offering = cropData.getoffering(); //get the offering
     int lvHarvest = cropData.getharvest(); //get the amount of wheat harvested.
-    int payOffering = offering * lvHarvest / 100; //calculate how much wheat will need to be paid as an offering
-    lvHarvest = lvHarvest - payOffering; //this will new amount of wheat harvested after tithing is paid on it.
+    int payOffering = offering * lvHarvest / 100; //calculate how much wheat will need to be paid as an offering. Change to a percentage
+    cropData.setofferingBushels(payOffering); //set the amount of tithing (in bushels of wheat) that was paid.
+    lvHarvest = lvHarvest - payOffering; //this will be the new amount of wheat harvested after tithing is paid on it.
     cropData.setharvestAfterOffering(lvHarvest);//set the harvest amount after paying tithing on it.
     int wheatInStore = cropData.getwheatInStore() + lvHarvest;//get the current wheat in store and add the new harvested amount
     cropData.setwheatInStore(wheatInStore);//set the new amount of wheat in store
-    
-    
-    
-    System.out.println("You agreed to pay " + cropData.getoffering() + " percent of your yield in tithing. Which means you owe " + payOffering + " bushels in wheat for tithing.");
-    System.out.println("You now have " + wheatInStore + " bushels of wheat in store");
+     
 }
 
-public static void calcWheatLostToRats(CropData cropData)
+//calcWheatLostToRats() method
+//Purpose: To find out how much wheat the rats ate/destroyed and subtract this from the Wheat in store
+//if the randomly generated number between 1 & 100 is less than 30 then a perecentage of the wheat in store
+//will be eaten based upon how much tithing was paid.
+//Parameters: cropData reference to a CropData object
+//Returns: nothing
+public static void calcEatenByRats(CropData cropData)
 {
-    int randomRatNumber = calcRandomRatNumber();
-    int tithingPaid = cropData.getoffering();
-    int wheatInStore = cropData.getwheatInStore();
-    System.out.println("The randdom rat number is " + randomRatNumber);
+    int randomRatNumber = calcRandomRatNumber(); //calculate the random rat number between 1 - 100
+    int tithingPaid = cropData.getoffering();  //get the amount of tithing paid.
+    int wheatInStore = cropData.getwheatInStore(); //get the amount of wheat in store
     
     
-    if(randomRatNumber < 30 && tithingPaid < 8)
+    if(randomRatNumber >= 30) //first check of the random generated number is above 30
+        {
+            cropData.seteatenByRats(0);
+        }
+    else if (tithingPaid < 8)  //if random generated number is less than 30 and tithingPaid is less than 8
         {
             int multiplier = random.nextInt(EBRS_0TO7_RANGE) + EBRS_0TO7_BASE;
-            System.out.println("the multiplier is " + multiplier);
-            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
-            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            int eatenByRats = wheatInStore * multiplier / 100;
             cropData.seteatenByRats(eatenByRats);
-            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
             wheatInStore = wheatInStore - eatenByRats;
-            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
             cropData.setwheatInStore(wheatInStore);
         }
         
-    else if (randomRatNumber < 30 && (tithingPaid >= 8 && tithingPaid <=12))
+    else if (tithingPaid >= 8 && tithingPaid <=12) //if random generated number is less than 30 and tithingPaid is less >= 8 and <= 12
         {
             int multiplier = random.nextInt(EBRS_8TO12_RANGE) + EBRS_8TO12_BASE;
-            System.out.println("the multiplier is " + multiplier);
-            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
-            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            int eatenByRats = wheatInStore * multiplier / 100;
             cropData.seteatenByRats(eatenByRats);
-            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
             wheatInStore = wheatInStore - eatenByRats;
-            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
             cropData.setwheatInStore(wheatInStore);
         }
     
-    else if (randomRatNumber < 30 && (tithingPaid > 12))
+    else 
         {
-            int multiplier = random.nextInt(EBRS_ABOVE_RANGE) + EBRS_ABOVE_BASE;
-            System.out.println("the multiplier is " + multiplier);
-            System.out.println("The amount of wheat in store before the rats was " + wheatInStore + " bushels");
-            int eatenByRats = wheatInStore * randomRatNumber / 100;
+            int multiplier = random.nextInt(EBRS_ABOVE_RANGE) + EBRS_ABOVE_BASE; //all other conditions
+            int eatenByRats = wheatInStore * multiplier / 100;
             cropData.seteatenByRats(eatenByRats);
-            System.out.println("The amount of wheat eaten by the rats was " + eatenByRats + " bushels" );
             wheatInStore = wheatInStore - eatenByRats;
-            System.out.println("The amount of wheat in store after the rats is " + wheatInStore + " bushels");
             cropData.setwheatInStore(wheatInStore);
-            
         }
+}
+
+//calcPopulationGrowth() method
+//Purpose: To grow the population based on generating a random number between 1 and 5 percent and multiplying that by the current population to get the population increase.
+//Paramaters: cropData reference to a CropData object
+//Returns: nothing
+public static void growPopulation(CropData cropData)
+{
+    int randomGrowthNumber = calcGrowthNumber();//call method to generate number between 1 and 5
+    int currentPopulation = cropData.getpopulation();//get current population
+    int populationGrowth = currentPopulation * randomGrowthNumber / 100;//get the population growth, divide by 100 to change to a percentage number
+    cropData.setnewPeople(populationGrowth);//set the number of new people that moved to the city
+    int newPopulation = currentPopulation + populationGrowth;
+    cropData.setpopulation(newPopulation);//set the new population
+            
+}
+
+//calcPopulationDecrease() method
+//Purpose: Calculate the number of people that starved to death and update the population of the city
+//Paramaters: cropData reference to a CropData object
+//Returns: nothing
+public static void calcStarved(CropData cropData)
+{
+    int wheatSetAside = cropData.getwheatForPeople();  //Gets the amount of wheat set aside to feed the people for the year.
+    int numThatCanBeFed = wheatSetAside/20; //Divides the wheat set aside by 20 to get how many people can be fed for the year (it takes 20 bushels of wheat per person per year).
+    int currentPopulation = cropData.getpopulation(); //Gets current population.
+    int numThatStarve = currentPopulation - numThatCanBeFed;//Get the number of people that starved by subtracting the number of people that "can" be fed from the current population
+    
+    if(numThatCanBeFed >= currentPopulation) //This is good no one starved
+    {
+        cropData.setnumStarved(0);
+        cropData.setpeopleFed(currentPopulation);
+    }
+    else
+    {
+        cropData.setnumStarved(numThatStarve);//Sets the number of people that starved for the year
+        cropData.setpeopleFed(numThatCanBeFed);//sets the number of people fed
+        currentPopulation = currentPopulation - numThatStarve;//Updates the population by subtracting the number that starved from the population
+        cropData.setpopulation(currentPopulation);//sets the current population
+        
+    }
+    System.out.println("\n\n");
 }
 
 }
