@@ -80,6 +80,7 @@ public void moveToNewLocation()
 
 public void manageCrops()
 {
+    CropView.cropsReportView(); //call the cropsReportView at the beginning of a game
     CropView.runCropsView();
 }
 
