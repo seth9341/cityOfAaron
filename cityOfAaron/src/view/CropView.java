@@ -29,7 +29,6 @@ public class CropView {
     //Returns: none
     public static void runCropsView()
     {
-        cropsReportView();
         //call the buyLandView() method
         buyLandView();
         
@@ -44,6 +43,29 @@ public class CropView {
         
         //call the setOfferingView() method
         setOfferingView();
+        
+        //call the harvestCrops() method to calculate the amount of wheat harvested, no user input
+        CropControl.harvestCrops(cropData);
+        
+        //call the payOffering() method to calculate how much wheat to pay as tithing, no user input
+        CropControl.payOffering(cropData);
+        
+        //call the calcWheatLostToRats() method to calculate the amount of wheat lost to rats, no user input        
+        CropControl.calcEatenByRats(cropData);
+        
+        //call the calcPopulationGrowth() method to calculate the number of people that moved into the city, no user input
+        CropControl.growPopulation(cropData);
+        
+        //call the calcPopulationDecrease() method to calculate the population by subtracting from the population the number that starved, no user input
+        CropControl.calcStarved(cropData);
+        
+        //call the cropsReportView() method that gathers all of the crops report data and displays it at the end of the game, no user input
+        cropsReportView();
+        
+        System.out.println("\n\nPress ENTER to continue..."); //added this to stop the output from scrolling before you could read it
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        
     }
             
     
@@ -65,12 +87,9 @@ public class CropView {
         int price = CropControl.calcLandCost();
         int currentAcresOwned = cropData.getacresOwned();
         
-        //Let the user know how much land they currently own and how much it is
-        //currently selling for.
-        System.out.println("You currently have " + currentAcresOwned + " acres of land.");
-        System.out.format("Land is selling for %d bushels per acre.%n",price);
-        
-        
+        //Let the user know how much land is currently selling for.
+         System.out.format("Land is selling for %d bushels per acre.%n",price);
+                
         //Get the user's input and save it.
         int toBuy;
         boolean paramsNotOkay;
@@ -104,17 +123,12 @@ public class CropView {
     {
         //Get the total number of people in the city.
         int people = cropData.getpopulation();
-        
-        //Prompt the user to enter the number of acres to sell.
-        System.out.println();
-        System.out.println("The current population in the City of Aaron is " + people);
-        
         int toSell;
         boolean paramsNotOkay;
         do
         {
            paramsNotOkay = false;
-           System.out.print("How many bushels of wheat do you want? ");
+           System.out.print("How many bushels of wheat do you want to set aside to feed the city? ");
            toSell = keyboard.nextInt();
            
            try {
@@ -173,7 +187,7 @@ public class CropView {
         {
             paramsNotOkay = false;               
             // Prompt the user for the amount of wheat to plant
-            System.out.println("How much wheat would you like to plant? ");
+            System.out.print("How much wheat would you like to plant? ");
         
             // Get input from the user and save it
             int acresPlanted = keyboard.nextInt();
