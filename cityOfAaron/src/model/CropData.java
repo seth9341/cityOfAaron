@@ -131,7 +131,8 @@ public class CropData implements Serializable {
 
     @Override
     public String toString() {
-        return  "You have been ruling for: " + year + " years\n" +
+        return  "\t\t Annual Report\n" +
+                "You have been ruling for: " + year + " years\n" +
                 "The number of citizens who starved to death this year: "  + numStarved + "\n" +
                 "The number of new people that moved into the city this year: " + newPeople + "\n" +
                 "The current population: " + population + "\n" +
