@@ -97,10 +97,10 @@ public GameMenuView()
         + "  -------------------------------\n");
 
     System.out.println("Key:\n" + "~~~ = river\n" + "!!! = farmland\n"
-    + "--- = desert\n" + "$$$ = court\n" + "||| = granary\n" + "^^^ = village\n"
-    + ":(:( = border\n" + "MMM = undeveloped\n" + "*** = rameumpton\n"
-    + "### = amphitheater\n" + "&&& = Soldiers Quarters\n" + "@@@ = bakery\n"
-    + "%%% = Village Garden\n" + "!**! = Temple\n" + "##!! = The Palace\n");
+    + "---_ = desert\n" + "$$$$ = court\n" + "|||| = granary\n" + "^^^^ = village\n"
+    + ":(:( = border\n" + "MMMM = undeveloped\n" + "**** = rameumpton\n"
+    + "#### = amphitheater\n" + "&&&& = Soldiers Quarters\n" + "@@@@ = bakery\n"
+    + "%%%% = Village Garden\n" + "!**! = Temple\n" + "##!! = The Palace\n");
     
     System.out.println("  -------------------------------\n"
         + "  -------------------------------\n");

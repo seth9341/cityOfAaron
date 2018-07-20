@@ -178,7 +178,7 @@ public class GameControl {
         
         //use setters in the Location class to set the description and symbol
         loc.setDescription(river);
-        loc.setSymbol("~~~");
+        loc.setSymbol("~~~~");
         
         //set this location object in each cell of the array in column 4
         for(int i = 0; i<MAX_ROW; i++)
@@ -194,7 +194,7 @@ public class GameControl {
         //set a farmland location with a hint
         loc = new Location();
         loc.setDescription(farmland + "\nOne bushel will plant two acres of wheat.");
-        loc.setSymbol("!!!");
+        loc.setSymbol("!!!!");
         theMap.setLocation(0,2, loc);
         
         //define the string for the desert location
@@ -204,7 +204,7 @@ public class GameControl {
         //set desert location
         loc = new Location();
         loc.setDescription(desert);
-        loc.setSymbol("---");
+        loc.setSymbol("----");
         
         //set this location object in row 0,1,2 in column 0
         for(int i =0; i<3; i++)
@@ -219,7 +219,7 @@ public class GameControl {
         //set The Ruler's Court location
         loc = new Location();
         loc.setDescription(court);
-        loc.setSymbol("$$$");
+        loc.setSymbol("$$$$");
 
         // set this location object in row 0 in column 1
         {
@@ -233,7 +233,7 @@ public class GameControl {
         // set the location for the granary and storehouse
         loc = new Location();
         loc.setDescription(granary);
-        loc.setSymbol("|||");
+        loc.setSymbol("||||");
 
         // set this location object in row 1 in column 1
         {
@@ -246,7 +246,7 @@ public class GameControl {
         // set the location for the village
         loc = new Location();
         loc.setDescription(village + "20 Bushels to feed 1 person");
-        loc.setSymbol("^^^");
+        loc.setSymbol("^^^^");
       
         //set this location object in row 2, 3 & in column 1
         for(int i =2; i<4; i++)
@@ -275,7 +275,7 @@ public class GameControl {
         // set the location for the village
         loc = new Location();
         loc.setDescription(undeveloped);
-        loc.setSymbol("MMM");
+        loc.setSymbol("MMMM");
       
         //set this location object in row 4 &  column 1, 2, & 3
         for(int i =1; i<4; i++)
@@ -291,7 +291,7 @@ public class GameControl {
         //set the Rameumpton location
         loc = new Location();
         loc.setDescription(rameumpton);
-        loc.setSymbol("***");
+        loc.setSymbol("****");
         theMap.setLocation(1,2, loc);
         
         //define the string for the Outdoor amphitheater location
@@ -302,7 +302,7 @@ public class GameControl {
         //set the Amphitheater location
         loc = new Location();
         loc.setDescription(amphitheater);
-        loc.setSymbol("###");
+        loc.setSymbol("####");
         theMap.setLocation(2,2, loc);
         
         //define the string for the soldiers quarters location
@@ -312,7 +312,7 @@ public class GameControl {
         //set the soldiers quarters location
         loc = new Location();
         loc.setDescription(soldierQuarters);
-        loc.setSymbol("&&&");
+        loc.setSymbol("&&&&");
         theMap.setLocation(3,2, loc);
         
         //define the string for the bakery location
@@ -322,7 +322,7 @@ public class GameControl {
         // set the location of the bakery
         loc = new Location();
         loc.setDescription(bakery);
-        loc.setSymbol("@@@");
+        loc.setSymbol("@@@@");
         theMap.setLocation(0, 3, loc);        
         
         //define the string for the villageGarden location
@@ -332,7 +332,7 @@ public class GameControl {
         // set the location of the villageGarden
         loc = new Location();
         loc.setDescription(villageGarden);
-        loc.setSymbol("%%%");
+        loc.setSymbol("%%%%");
         theMap.setLocation(1, 3, loc);  
         
         //define the string for the temple location
