@@ -9,6 +9,9 @@ import java.util.Scanner;
 import view.MainMenuView;
 import model.Map;
 import model.Location;
+import model.*;
+import cityofaaron.CityOfAaron;
+
 
 public class GameMenuView extends MenuView {
     
@@ -66,8 +69,12 @@ public GameMenuView()
     //Seth Huntley
     //Individual Assignment for week 13
     public void viewMap() {
-        Location[][] locations = null;
-        System.out.println("\nThe City of Aaron\n"
+        //get current game instance
+        Game theGame = CityOfAaron.getTheGame();
+        
+        Map map = theGame.getTheMap();
+        Location locations = null;
+        System.out.println("\nWelcome to the City of Aaron!\n"
         + "Come and see what we have to offer!\n"
         + "Courtesy of the City of Aaron Tourism Council.\n");
 
@@ -80,8 +87,8 @@ public GameMenuView()
             for (int j = 0; j < max; j++) {
                 System.out.print("|");
                 // Get the symbols and locations(row, column) for the map
-                Location location = locations[i][j];
-                System.out.print(" " + location.getSymbol() + "i");
+                locations = map.getLocation(i,j);
+                System.out.print(" " + locations.getSymbol());
             }
          
             System.out.println("|");
